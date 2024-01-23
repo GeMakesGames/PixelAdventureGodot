@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @onready var input_manager = $InputManager
 @onready var finite_state_machine = $FiniteStateMachine
@@ -9,6 +10,12 @@ extends CharacterBody2D
 @onready var fall_suvat = SUVAT.new(null, 0, 160, null, 1.0 / 60 * 15)
 @onready var run_suvat = SUVAT.new(null, 0, 90, null, 1.0 / 60 * 5)
 @onready var stop_suvat = SUVAT.new(null, run_suvat.v, 0 , null, 1.0 / 60 * 3)
+@onready var wall_slide_suvat = SUVAT.new(null, 0, 30, null, 1.0 / 60 * 30)
+@onready var wall_slide_overspeed_suvat = SUVAT.new(null, fall_suvat.v, wall_slide_suvat.v, null, 1.0 / 60 * 10)
+
+const WALL_JUMP_DISTANCE = 4
+
+var can_double_jump = true
 
 var facing_direction = 1:
 	get:
@@ -24,6 +31,9 @@ func _ready():
 	
 #func _process(_delta):
 	#print("FPS: %d" % Engine.get_frames_per_second())
+
+func land():
+	can_double_jump = true
 
 func _physics_process(delta):
 	input_manager.update_input()

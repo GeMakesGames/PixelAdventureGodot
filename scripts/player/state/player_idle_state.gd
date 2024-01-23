@@ -2,6 +2,8 @@ extends PlayerBaseState
 
 func enter():
 	object.animation_player.play("idle")
+	if finite_state_machine.previous_state_name == "fall":
+		object.land()
 
 func physics_process(delta):
 	var direction = object.input_manager.x;

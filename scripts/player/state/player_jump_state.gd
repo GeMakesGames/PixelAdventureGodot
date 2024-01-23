@@ -1,12 +1,11 @@
 extends PlayerBaseState
 
-var initial_y
 var variable_jump_height
 
 func enter():
 	object.animation_player.play("jump")
 	object.velocity.y = -object.jump_suvat.u
-	object.input_manager.jump_buffer = 0
+	object.input_manager.jump_buffer = false
 	# apply a little horizontal boost so the player can gain frames
 	object.velocity.x += object.input_manager.x * (object.run_suvat.v / 2)
 	variable_jump_height = false

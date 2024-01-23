@@ -13,3 +13,9 @@ func acceleration(delta, direction = object.input_manager.x):
 
 func move_and_slide():
 	object.move_and_slide()
+
+func wall_check(distance = 1):
+	for i in [-1, 1]:
+		if object.test_move(object.get_transform(), Vector2(i, 0) * distance):
+			return i
+	return 0

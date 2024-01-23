@@ -2,6 +2,8 @@ extends Node
 
 @onready var jump_buffer_timer = $JumpBufferTimer
 
+var vector = Vector2.ZERO
+var y = 0
 var x = 0
 var jump_pressed = false
 var jump_just_pressed = false:
@@ -20,5 +22,7 @@ var jump_buffer:
 		
 func update_input():
 	x = Input.get_axis("left", "right")
+	y = Input.get_axis("up", "down")
+	vector = Vector2(x, y)
 	jump_just_pressed = Input.is_action_just_pressed("jump")
 	jump_pressed = Input.is_action_pressed("jump")
