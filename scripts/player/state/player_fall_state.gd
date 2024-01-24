@@ -14,8 +14,8 @@ func physics_process(delta):
 	acceleration(delta)
 	object.update_facing_direction()
 	move_and_slide()
+	var direction = object.input_manager.x
 	if object.is_on_floor():
-		var direction = object.input_manager.x
 		if object.input_manager.jump_buffer:
 			change_state("jump")
 			object.land()
@@ -25,7 +25,7 @@ func physics_process(delta):
 			change_state("run")
 	elif object.input_manager.jump_buffer and wall_check(Player.WALL_JUMP_DISTANCE) != 0:
 		change_state("walljump")
-	elif object.is_on_wall():
+	elif object.is_on_wall() and (object.get_wall_normal().x * -1 == direction):
 		change_state("wallslide")
 	else:
 		if not coyote_timer.is_stopped() and object.input_manager.jump_just_pressed:

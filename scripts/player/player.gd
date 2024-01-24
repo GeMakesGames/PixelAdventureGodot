@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+signal died
+
 @onready var input_manager = $InputManager
 @onready var finite_state_machine = $FiniteStateMachine
 @onready var animation_player = $AnimationPlayer
@@ -41,3 +43,7 @@ func _physics_process(delta):
 
 func update_facing_direction(direction = input_manager.x):
 	facing_direction = direction
+
+
+func _on_trap_area_body_entered(body):
+	finite_state_machine.change_state("dead")

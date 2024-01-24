@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rdi7kaeauv25"
-path="res://.godot/imported/Appearing (96x96).png-f71c8cdcf8b56a2ef1cfa79d26a7c117.ctex"
+uid="uid://cdoa3v44psi0r"
+path="res://.godot/imported/Green.png-c8cb3fa3b8c1a08968c5f808f33c2317.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/Appearing (96x96).png"
-dest_files=["res://.godot/imported/Appearing (96x96).png-f71c8cdcf8b56a2ef1cfa79d26a7c117.ctex"]
+source_file="res://assets/background/Green.png"
+dest_files=["res://.godot/imported/Green.png-c8cb3fa3b8c1a08968c5f808f33c2317.ctex"]
 
 [params]
 

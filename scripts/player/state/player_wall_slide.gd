@@ -5,7 +5,7 @@ var direction
 func enter():
 	object.animation_player.play("wall_slide")
 	object.velocity.x = 0
-	direction = object.get_last_slide_collision().get_normal().x * - 1
+	direction = object.get_wall_normal().x * -1
 	object.facing_direction = direction
 	
 func physics_process(delta):
