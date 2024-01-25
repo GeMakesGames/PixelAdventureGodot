@@ -7,13 +7,20 @@ signal died
 @onready var finite_state_machine = $FiniteStateMachine
 @onready var animation_player = $AnimationPlayer
 @onready var sprite = $Sprite2D
+@onready var collision_shape = $CollisionShape2D
 
 @onready var jump_suvat = SUVAT.new(48, null, 0, null, 1.0 / 60 * 15)
 @onready var fall_suvat = SUVAT.new(null, 0, 160, null, 1.0 / 60 * 15)
-@onready var run_suvat = SUVAT.new(null, 0, 90, null, 1.0 / 60 * 5)
+@onready var run_suvat = SUVAT.new(null, 0, 110, null, 1.0 / 60 * 5)
 @onready var stop_suvat = SUVAT.new(null, run_suvat.v, 0 , null, 1.0 / 60 * 3)
 @onready var wall_slide_suvat = SUVAT.new(null, 0, 30, null, 1.0 / 60 * 30)
 @onready var wall_slide_overspeed_suvat = SUVAT.new(null, fall_suvat.v, wall_slide_suvat.v, null, 1.0 / 60 * 10)
+@onready var hit_suvat = SUVAT.new(null, 300, 1, null, 1.0 / 60 * 30)
+@onready var hit_fall_suvat = SUVAT.new(null, -500, 320, null, 1.0 / 60 * 40)
+
+#state related variables
+var hit_direction
+#end of state related variables
 
 const WALL_JUMP_DISTANCE = 4
 

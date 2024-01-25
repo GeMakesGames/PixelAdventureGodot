@@ -11,3 +11,6 @@ func physics_process(delta):
 			change_state("idle")
 		else:
 			change_state("fall")
+
+func exit():
+	object.can_double_jump = true
