@@ -12,5 +12,5 @@ func _on_body_entered(body):
 	player = body
 	finite_state_machine.change_state("jump")
 
-func _on_body_exited(body):
+func _on_body_exited(_body):
 	player = null

@@ -19,16 +19,16 @@ func _ready():
 func _physics_process(delta):
 	finite_state_machine.physics_process(delta)
 
-func _translate_direction_to_vector(direction):
-	match direction:
+func _translate_direction_to_vector(direction_to_translate):
+	match direction_to_translate:
 		Direction.LEFT: return Vector2(-1, -.4)
 		Direction.RIGHT: return Vector2(1, -.4)
 		Direction.UP: return Vector2.UP
 		Direction.DOWN: return Vector2.DOWN
 		_: return Vector2.UP
 		
-func _translate_direction_to_rotation(direction):
-	match direction:
+func _translate_direction_to_rotation(direction_to_translate):
+	match direction_to_translate:
 		Direction.LEFT: return 270
 		Direction.RIGHT: return 90
 		Direction.DOWN: return 180

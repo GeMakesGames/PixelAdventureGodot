@@ -6,7 +6,7 @@ func enter():
 	object.animation_player.play("on")
 	object.fire_area_collision_shape.set_deferred("disabled", false)
 
-func physics_process(delta):
+func physics_process(_delta):
 	if timer.is_stopped() && not object.step_area.has_overlapping_bodies():
 		timer.start()
 

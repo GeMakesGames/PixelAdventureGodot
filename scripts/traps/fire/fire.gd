@@ -11,7 +11,7 @@ func _ready():
 func _physics_process(delta):
 	finite_state_machine.physics_process(delta)
 
-func _on_step_area_body_entered(body):
+func _on_step_area_body_entered(_body):
 	if finite_state_machine.current_state_name == "off":
 		finite_state_machine.change_state("hit")
 

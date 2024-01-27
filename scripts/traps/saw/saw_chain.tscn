@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1ta8uoie47i3"]
+
+[ext_resource type="Texture2D" uid="uid://bclysglixgdq8" path="res://assets/traps/saw/chain.png" id="1_3ga8a"]
+
+[node name="SawChain" type="Sprite2D"]
+texture = ExtResource("1_3ga8a")

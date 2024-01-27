@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dry3oacwbx81c"]
+
+[ext_resource type="Texture2D" uid="uid://pvnv3dovdla4" path="res://assets/traps/platforms/chain.png" id="1_8bx57"]
+
+[node name="PlatformChain" type="Sprite2D"]
+texture = ExtResource("1_8bx57")

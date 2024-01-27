@@ -8,6 +8,6 @@ func enter():
 	object.collision_shape.set_deferred("disabled", true)
 	timer.start()
 
-func physics_process(delta):
+func physics_process(_delta):
 	if timer.is_stopped():
 		change_state("spawn")

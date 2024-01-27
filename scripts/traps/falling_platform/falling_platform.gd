@@ -13,7 +13,7 @@ func _ready():
 func _physics_process(delta):
 	finite_state_machine.physics_process(delta)
 
-func _on_step_area_body_entered(body):
+func _on_step_area_body_entered(_body):
 	timer.start()
 
 func _on_timer_timeout():

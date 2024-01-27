@@ -8,6 +8,7 @@ signal died
 @onready var animation_player = $AnimationPlayer
 @onready var sprite = $Sprite2D
 @onready var collision_shape = $CollisionShape2D
+@onready var squish_collision_shape = $SquishArea/CollisionShape2D
 
 @onready var jump_suvat = SUVAT.new(48, null, 0, null, 1.0 / 60 * 15)
 @onready var fall_suvat = SUVAT.new(null, 0, 160, null, 1.0 / 60 * 15)
@@ -52,5 +53,10 @@ func update_facing_direction(direction = input_manager.x):
 	facing_direction = direction
 
 
-func _on_trap_area_body_entered(body):
+func _on_trap_area_body_entered(_body):
 	finite_state_machine.change_state("dead")
+
+
+func _on_squish_area_body_entered(body):
+	hit_direction = -1
+	finite_state_machine.change_state("hit")
