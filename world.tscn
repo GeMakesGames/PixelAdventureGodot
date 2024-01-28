@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://d31pfp8h4ojj2"]
+[gd_scene load_steps=62 format=3 uid="uid://d31pfp8h4ojj2"]
 
 [ext_resource type="Texture2D" uid="uid://ghogniyctmod" path="res://assets/background/yellow.png" id="1_fp538"]
 [ext_resource type="Script" path="res://scripts/world/world.gd" id="1_kdde7"]
@@ -38,6 +38,8 @@
 [ext_resource type="PackedScene" uid="uid://bwulao4y8tsbg" path="res://scripts/traps/platforms/brown_platform.tscn" id="36_rbsyq"]
 [ext_resource type="PackedScene" uid="uid://dgrq8742uj712" path="res://scripts/traps/saw/saw.tscn" id="37_btll8"]
 [ext_resource type="PackedScene" uid="uid://btwsr22framg" path="res://scripts/traps/rock_head/rock_head.tscn" id="38_rm1w1"]
+[ext_resource type="PackedScene" uid="uid://drur3kjwge3xi" path="res://scripts/traps/fan/fan.tscn" id="39_ua4g4"]
+[ext_resource type="PackedScene" uid="uid://de07fvmv6cruy" path="res://scripts/traps/blocks/block.tscn" id="40_vay08"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1nynh"]
 texture = ExtResource("4_l4r0t")
@@ -1472,13 +1474,11 @@ layer_1/tile_data = PackedInt32Array(0, 196608, 4, 1, 65536, 6, 2, 65536, 6, 3, 
 
 [node name="RockHead" parent="RockHeads" instance=ExtResource("38_rm1w1")]
 position = Vector2(64, 96)
-collision_mask = 2
 pattern = Array[int]([1, 2, 3, 0])
 
 [node name="RockHead2" parent="RockHeads" instance=ExtResource("38_rm1w1")]
-position = Vector2(224, 239.8)
-collision_mask = 2
-pattern = Array[int]([1, 0])
+position = Vector2(224, 240)
+pattern = Array[int]([0, 1])
 
 [node name="GreyPlatform" parent="." instance=ExtResource("35_vnwh7")]
 position = Vector2(702, 201)
@@ -1489,7 +1489,7 @@ position = Vector2(218, 7)
 curve = SubResource("Curve2D_kwbkl")
 
 [node name="SpikeHead" parent="." instance=ExtResource("31_4wmi6")]
-position = Vector2(280, 280)
+position = Vector2(40, 184)
 pattern = Array[int]([1, 0])
 
 [node name="FallingPlatform" parent="." instance=ExtResource("34_2mdua")]
@@ -1514,49 +1514,13 @@ direction = 0
 [node name="Fires" type="Node2D" parent="."]
 
 [node name="Fire" parent="Fires" instance=ExtResource("5_6onq2")]
-position = Vector2(328, 336)
+position = Vector2(584, 336)
 
 [node name="Fire2" parent="Fires" instance=ExtResource("5_6onq2")]
-position = Vector2(344, 336)
+position = Vector2(600, 336)
 
 [node name="Fire3" parent="Fires" instance=ExtResource("5_6onq2")]
-position = Vector2(360, 336)
-
-[node name="Fire4" parent="Fires" instance=ExtResource("5_6onq2")]
-position = Vector2(376, 336)
-
-[node name="Fire5" parent="Fires" instance=ExtResource("5_6onq2")]
-position = Vector2(392, 336)
-
-[node name="Fire6" parent="Fires" instance=ExtResource("5_6onq2")]
-position = Vector2(408, 336)
-
-[node name="Fire7" parent="Fires" instance=ExtResource("5_6onq2")]
-position = Vector2(424, 336)
-
-[node name="Fire8" parent="Fires" instance=ExtResource("5_6onq2")]
-position = Vector2(440, 336)
-
-[node name="Fire9" parent="Fires" instance=ExtResource("5_6onq2")]
-position = Vector2(456, 336)
-
-[node name="Fire10" parent="Fires" instance=ExtResource("5_6onq2")]
-position = Vector2(472, 336)
-
-[node name="Fire11" parent="Fires" instance=ExtResource("5_6onq2")]
-position = Vector2(488, 336)
-
-[node name="Fire12" parent="Fires" instance=ExtResource("5_6onq2")]
-position = Vector2(504, 336)
-
-[node name="Fire13" parent="Fires" instance=ExtResource("5_6onq2")]
-position = Vector2(520, 336)
-
-[node name="Fire14" parent="Fires" instance=ExtResource("5_6onq2")]
-position = Vector2(536, 336)
-
-[node name="Fire15" parent="Fires" instance=ExtResource("5_6onq2")]
-position = Vector2(552, 336)
+position = Vector2(616, 336)
 
 [node name="Spikes" type="Node2D" parent="."]
 
@@ -1594,9 +1558,9 @@ position = Vector2(200, 304)
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(32, 288)
-collision_mask = 10
+collision_mask = 26
 platform_on_leave = 2
-platform_floor_layers = 4294901768
+platform_floor_layers = 4294901784
 script = ExtResource("2_525nb")
 metadata/_edit_group_ = true
 
@@ -1677,6 +1641,27 @@ shape = SubResource("RectangleShape2D_23hqv")
 
 [node name="Trampoline" parent="." instance=ExtResource("28_lq4tb")]
 position = Vector2(80, 320)
+
+[node name="Fan" parent="." instance=ExtResource("39_ua4g4")]
+position = Vector2(272, 304)
+
+[node name="Block" parent="." instance=ExtResource("40_vay08")]
+position = Vector2(328, 328)
+
+[node name="Block2" parent="." instance=ExtResource("40_vay08")]
+position = Vector2(344, 328)
+
+[node name="Block3" parent="." instance=ExtResource("40_vay08")]
+position = Vector2(360, 328)
+
+[node name="Block4" parent="." instance=ExtResource("40_vay08")]
+position = Vector2(360, 312)
+
+[node name="Block5" parent="." instance=ExtResource("40_vay08")]
+position = Vector2(360, 296)
+
+[node name="Block6" parent="." instance=ExtResource("40_vay08")]
+position = Vector2(360, 280)
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="timeout" from="Player/FiniteStateMachine/Hit/Timer" to="Player/FiniteStateMachine/Hit" method="_on_timer_timeout"]

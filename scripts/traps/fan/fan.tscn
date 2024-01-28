@@ -1,0 +1,217 @@
+[gd_scene load_steps=18 format=3 uid="uid://drur3kjwge3xi"]
+
+[ext_resource type="Script" path="res://scripts/traps/fan/fan.gd" id="1_f5uxd"]
+[ext_resource type="Texture2D" uid="uid://bxtnunauhuseo" path="res://assets/traps/fan/off.png" id="1_gruvr"]
+[ext_resource type="Texture2D" uid="uid://g13wt0yhl2bl" path="res://assets/traps/fan/on.png" id="2_tdh53"]
+[ext_resource type="Script" path="res://scripts/fsm/finite_state_machine.gd" id="4_2tf3y"]
+[ext_resource type="Script" path="res://scripts/traps/fan/state/fan_off_state.gd" id="5_8yqhw"]
+[ext_resource type="Script" path="res://scripts/traps/fan/state/fan_on_state.gd" id="6_tcgt2"]
+[ext_resource type="Texture2D" uid="uid://jeb7jjchbvdb" path="res://assets/others/dust_particle.png" id="7_55kx5"]
+
+[sub_resource type="Animation" id="Animation_8h72k"]
+resource_name = "off"
+step = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_gruvr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_35xpi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_gruvr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nd00h"]
+resource_name = "on"
+length = 0.200005
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_tdh53")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tdm2y"]
+_data = {
+"RESET": SubResource("Animation_35xpi"),
+"off": SubResource("Animation_8h72k"),
+"on": SubResource("Animation_nd00h")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvc5h"]
+size = Vector2(32, 88)
+
+[sub_resource type="Curve" id="Curve_31o4w"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_y8l8c"]
+curve = SubResource("Curve_31o4w")
+
+[sub_resource type="Curve" id="Curve_pvgyn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.966667, 0.351648), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_y87v3"]
+curve = SubResource("Curve_pvgyn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nw8ru"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(16, 1, 1)
+direction = Vector3(0, -1, 0)
+flatness = 1.0
+initial_velocity_min = 40.0
+initial_velocity_max = 100.0
+scale_over_velocity_max = 100.0
+scale_over_velocity_curve = SubResource("CurveTexture_y87v3")
+alpha_curve = SubResource("CurveTexture_y8l8c")
+
+[node name="Fan" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_f5uxd")
+start_time = 3.0
+cd_time = 2.0
+duration_time = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("1_gruvr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tdm2y")
+}
+autoplay = "off"
+
+[node name="FiniteStateMachine" type="Node" parent="."]
+script = ExtResource("4_2tf3y")
+
+[node name="Off" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("5_8yqhw")
+
+[node name="CooldownTimer" type="Timer" parent="FiniteStateMachine/Off"]
+process_callback = 0
+one_shot = true
+
+[node name="On" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("6_tcgt2")
+
+[node name="DurationTimer" type="Timer" parent="FiniteStateMachine/On"]
+one_shot = true
+
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -44)
+shape = SubResource("RectangleShape2D_jvc5h")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -8)
+emitting = false
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_nw8ru")
+texture = ExtResource("7_55kx5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

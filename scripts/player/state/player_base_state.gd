@@ -15,6 +15,13 @@ func acceleration(delta, direction = object.input_manager.x):
 
 func move_and_slide():
 	object.move_and_slide()
+		
+	for i in object.get_slide_collision_count():
+		var collision = object.get_slide_collision(i)
+		if collision.get_collider() is Block:
+			var normal = collision.get_normal()
+			collision.get_collider().destroy(object, normal)
+
 
 func wall_check(distance = 1):
 	for i in [-1, 1]:

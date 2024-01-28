@@ -1,4 +1,4 @@
-extends AnimatableBody2D
+extends CharacterBody2D
 
 enum Direction {LEFT, RIGHT, UP, DOWN}
 
@@ -12,8 +12,6 @@ var pattern_index = 0
 var pattern_direction
 var pattern_value
 var pattern_finish = false
-
-var velocity = Vector2.ZERO
 
 func _ready():
 	finite_state_machine.change_state("idle")

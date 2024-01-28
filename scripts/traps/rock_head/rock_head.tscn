@@ -12,47 +12,6 @@
 [ext_resource type="Script" path="res://scripts/traps/rock_head/state/rock_head_move_state.gd" id="10_suw6w"]
 [ext_resource type="Script" path="res://scripts/traps/rock_head/state/rock_head_hit_state.gd" id="11_6b7br"]
 
-[sub_resource type="Animation" id="Animation_lpge1"]
-resource_name = "idle"
-length = 0.050005
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_uercn")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="Animation" id="Animation_w4pgp"]
 length = 0.001
 tracks/0/type = "value"
@@ -175,9 +134,9 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_gsvl1"]
-resource_name = "top"
-length = 0.200005
+[sub_resource type="Animation" id="Animation_lpge1"]
+resource_name = "idle"
+length = 0.050005
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -189,7 +148,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_q2xkn")]
+"values": [ExtResource("1_uercn")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -201,7 +160,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [1]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -210,10 +169,10 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_keydv"]
@@ -298,6 +257,47 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_gsvl1"]
+resource_name = "top"
+length = 0.200005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_q2xkn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rxpgt"]
 _data = {
 "RESET": SubResource("Animation_w4pgp"),
@@ -312,10 +312,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1018"]
 size = Vector2(32, 32)
 
-[node name="RockHead" type="AnimatableBody2D"]
-collision_layer = 2
-collision_mask = 0
-sync_to_physics = false
+[node name="RockHead" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 2
+floor_stop_on_slope = false
+floor_block_on_wall = false
+platform_floor_layers = 4294967040
 script = ExtResource("1_0i4c8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
