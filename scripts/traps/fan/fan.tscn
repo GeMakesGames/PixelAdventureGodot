@@ -8,9 +8,8 @@
 [ext_resource type="Script" path="res://scripts/traps/fan/state/fan_on_state.gd" id="6_tcgt2"]
 [ext_resource type="Texture2D" uid="uid://jeb7jjchbvdb" path="res://assets/others/dust_particle.png" id="7_55kx5"]
 
-[sub_resource type="Animation" id="Animation_8h72k"]
-resource_name = "off"
-step = 20.0
+[sub_resource type="Animation" id="Animation_35xpi"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -48,8 +47,9 @@ tracks/2/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_35xpi"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_8h72k"]
+resource_name = "off"
+step = 20.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

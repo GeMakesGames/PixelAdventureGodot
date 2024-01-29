@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqhya6xdikefy"]
+
+[ext_resource type="Script" path="res://scripts/traps/spike_ball/spike_ball.gd" id="1_o1cps"]
+[ext_resource type="Texture2D" uid="uid://b7uftqt06y6ja" path="res://assets/traps/spike_ball/spiked_ball.png" id="2_68uly"]
+
+[sub_resource type="Curve" id="Curve_6xq0o"]
+min_value = -90.0
+max_value = 90.0
+_data = [Vector2(0, 90), 0.0, 0.0, 0, 0, Vector2(0.5, -90), 0.0, 0.0, 0, 0, Vector2(1, 90), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_blv5t"]
+
+[node name="SpikeBall" type="Node2D"]
+script = ExtResource("1_o1cps")
+curve = SubResource("Curve_6xq0o")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+metadata/_edit_group_ = true
+
+[node name="Ball" type="Sprite2D" parent="DamageArea"]
+texture = ExtResource("2_68uly")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(0.5, 0)
+shape = SubResource("CircleShape2D_blv5t")
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
