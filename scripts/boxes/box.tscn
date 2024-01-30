@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://50rw05jcvamr"]
+
+[ext_resource type="Texture2D" uid="uid://ntessv58n828" path="res://assets/boxes/box_1/hit.png" id="1_je63v"]
+[ext_resource type="Texture2D" uid="uid://cnpdt0lk7lr14" path="res://assets/boxes/box_1/idle.png" id="2_h1f0w"]
+[ext_resource type="Script" path="res://scripts/boxes/box.gd" id="3_cguks"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_111n1"]
+atlas = ExtResource("1_je63v")
+region = Rect2(0, 0, 28, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el5uk"]
+atlas = ExtResource("1_je63v")
+region = Rect2(28, 0, 28, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxf1j"]
+atlas = ExtResource("1_je63v")
+region = Rect2(56, 0, 28, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v410v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"destroy",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_111n1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el5uk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxf1j")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h1f0w")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_45e4m"]
+
+[node name="Box" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_cguks")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v410v")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_45e4m")
+
+[node name="DestroyTimer" type="Timer" parent="."]
+wait_time = 4.5
+one_shot = true
+
+[connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]

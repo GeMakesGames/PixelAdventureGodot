@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://psmv6bsp7ljc"]
+
+[ext_resource type="PackedScene" uid="uid://50rw05jcvamr" path="res://scripts/boxes/box.tscn" id="1_53pkh"]
+[ext_resource type="PackedScene" uid="uid://b5t0tysougpt3" path="res://scripts/boxes/box_1_fragment.tscn" id="4_lawxk"]
+
+[node name="Box" instance=ExtResource("1_53pkh")]
+hp = 3
+fragments = ExtResource("4_lawxk")

@@ -20,10 +20,14 @@ func move_and_slide():
 	for i in object.get_slide_collision_count():
 		var collision = object.get_slide_collision(i)
 		var collider = collision.get_collider()
+		var normal = collision.get_normal()
 		if collider is Block:
-			var normal = collision.get_normal()
 			collider.destroy(object, normal)
-		elif collider is TileMap and collision.get_normal().y == -1:
+		elif collider is Box and normal.y != 0:
+			if normal.y == -1 and not finite_state_machine.current_state_name == "fall":
+				continue
+			collider.hit(object, normal.y)
+		elif collider is TileMap and normal.y == -1 and not has_terrain:
 			var body_rid = collision.get_collider_rid()
 			var layer = collider.get_layer_for_body_rid(body_rid)
 			var coord = collider.get_coords_for_body_rid(body_rid)
@@ -33,7 +37,6 @@ func move_and_slide():
 				has_terrain = true
 				if object.terrain != terrain:
 					object.terrain = terrain
-				break
 	if not has_terrain and object.terrain:
 		object.terrain = null
 

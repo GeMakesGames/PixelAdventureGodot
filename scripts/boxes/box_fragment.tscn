@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3dnhqrevyo5f"]
+
+[ext_resource type="Script" path="res://scripts/boxes/box_fragment.gd" id="1_bcpbx"]
+[ext_resource type="Texture2D" uid="uid://dym82qvwg4uh4" path="res://assets/boxes/box_1/break.png" id="1_ehu7v"]
+
+[node name="BoxFragment" type="Node2D"]
+script = ExtResource("1_bcpbx")
+
+[node name="TopLeft" type="RigidBody2D" parent="."]
+position = Vector2(-6, -5)
+collision_layer = 0
+collision_mask = 2
+linear_velocity = Vector2(-70, -70)
+angular_velocity = -3.14159
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="TopLeft"]
+texture = ExtResource("1_ehu7v")
+hframes = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TopLeft"]
+polygon = PackedVector2Array(-3, -5, 5, -5, 5, 1, 4, 1, 4, 2, 3, 2, 3, 3, -4, 3, -4, -4, -3, -4)
+
+[node name="TopRight" type="RigidBody2D" parent="."]
+position = Vector2(4, -5)
+collision_layer = 0
+collision_mask = 2
+linear_velocity = Vector2(70, -70)
+angular_velocity = 3.14159
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="TopRight"]
+texture = ExtResource("1_ehu7v")
+hframes = 4
+frame = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TopRight"]
+polygon = PackedVector2Array(-4, -5, 5, -5, 5, -4, 6, -4, 6, 3, -2, 3, -2, 2, -4, 2, -4, 1, -5, 1, -5, -2, -4, -2)
+
+[node name="BottomLeft" type="RigidBody2D" parent="."]
+position = Vector2(-5, 6)
+collision_layer = 0
+collision_mask = 2
+linear_velocity = Vector2(-70, 0)
+angular_velocity = 3.14159
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="BottomLeft"]
+texture = ExtResource("1_ehu7v")
+hframes = 4
+frame = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BottomLeft"]
+polygon = PackedVector2Array(-5, -5, -1, -5, -1, -4, 0, -4, 0, -3, 5, -3, 5, -2, 6, -2, 6, 0, 7, 0, 7, 4, -4, 4, -4, 3, -5, 3)
+
+[node name="BottomRight" type="RigidBody2D" parent="."]
+position = Vector2(6, 6)
+collision_layer = 0
+collision_mask = 2
+linear_velocity = Vector2(70, 0)
+angular_velocity = -3.14159
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="BottomRight"]
+texture = ExtResource("1_ehu7v")
+hframes = 4
+frame = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BottomRight"]
+polygon = PackedVector2Array(-4, 0, -3, 0, -3, -1, -1, -1, -1, -2, 0, -2, 0, -4, 1, -4, 1, -5, 4, -5, 4, 3, 3, 3, 3, 4, -4, 4)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="BlinkTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]
