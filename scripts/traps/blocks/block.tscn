@@ -204,5 +204,11 @@ script = ExtResource("3_22ypc")
 [node name="Hit" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("5_qgpn2")
 
+[node name="DestroyTimer" type="Timer" parent="FiniteStateMachine/Hit"]
+wait_time = 2.5
+one_shot = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_5v0di")
+
+[connection signal="timeout" from="FiniteStateMachine/Hit/DestroyTimer" to="FiniteStateMachine/Hit" method="_on_destroy_timer_timeout"]

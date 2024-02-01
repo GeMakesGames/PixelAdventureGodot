@@ -32,6 +32,8 @@ signal died
 var hit_direction
 #end of state related variables
 
+var riding_platforms = []
+
 const WALL_JUMP_DISTANCE = 4
 
 var can_double_jump = true

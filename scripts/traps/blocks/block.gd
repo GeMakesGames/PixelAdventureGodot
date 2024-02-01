@@ -4,6 +4,7 @@ class_name Block
 @onready var animation_player = $AnimationPlayer
 @onready var finite_state_machine = $FiniteStateMachine
 @onready var collision_shape = $CollisionShape2D
+@onready var sprite = $Sprite2D
 
 var hit_direction
 var player
@@ -19,4 +20,3 @@ func destroy(_player, _hit_direction):
 	hit_direction = _hit_direction
 	player = _player
 	finite_state_machine.change_state("hit")
-	

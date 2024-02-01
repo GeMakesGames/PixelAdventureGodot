@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0dmyydjji6h7"]
+
+[ext_resource type="Script" path="res://scripts/traps/blocks/block_fragment.gd" id="1_qy8ne"]
+[ext_resource type="Texture2D" uid="uid://cvi8kfq0hrqd" path="res://assets/traps/blocks/part_2.png" id="1_ulmu0"]
+[ext_resource type="Texture2D" uid="uid://dbkd7vs5ml2a3" path="res://assets/traps/blocks/part_1.png" id="2_gyrn3"]
+
+[sub_resource type="Animation" id="Animation_tp51d"]
+resource_name = "destroy"
+length = 0.150005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UpperPart/UpperSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BottomPart/BottomSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_15ggl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UpperPart/UpperSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BottomPart/BottomSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s8t0y"]
+_data = {
+"RESET": SubResource("Animation_15ggl"),
+"destroy": SubResource("Animation_tp51d")
+}
+
+[node name="BlockFragment" type="Node2D"]
+script = ExtResource("1_qy8ne")
+
+[node name="UpperPart" type="RigidBody2D" parent="."]
+position = Vector2(0, -3)
+collision_layer = 32
+collision_mask = 34
+metadata/_edit_group_ = true
+
+[node name="UpperSprite" type="Sprite2D" parent="UpperPart"]
+texture = ExtResource("1_ulmu0")
+hframes = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="UpperPart"]
+polygon = PackedVector2Array(-8, 2, -6, 2, -6, 1, -5, 1, -5, 2, -4, 2, -4, 3, -3, 3, -3, 4, 0, 4, 0, 3, 1, 3, 1, 2, 2, 2, 2, 1, 3, 1, 3, 2, 4, 2, 4, 3, 5, 3, 5, 4, 8, 4, 8, -5, 7, -5, 7, -6, -7, -6, -7, -5, -8, -5)
+
+[node name="BottomPart" type="RigidBody2D" parent="."]
+position = Vector2(0, 5)
+collision_layer = 32
+collision_mask = 34
+metadata/_edit_group_ = true
+
+[node name="BottomSprite" type="Sprite2D" parent="BottomPart"]
+texture = ExtResource("2_gyrn3")
+hframes = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BottomPart"]
+polygon = PackedVector2Array(-8, -5, -4, -5, -4, -4, -3, -4, -3, -3, -2, -3, -2, -2, -1, -2, -1, -3, 0, -3, 0, -4, 1, -4, 1, -5, 4, -5, 4, -4, 5, -4, 5, -3, 6, -3, 6, -2, 8, -2, 8, 3, 7, 3, 7, 4, -7, 4, -7, 3, -8, 3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s8t0y")
+}
+autoplay = "destroy"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
+[node name="BlinkTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]

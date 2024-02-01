@@ -1,15 +1,16 @@
 extends Area2D
+class_name Fruit
 
 @export_enum("apple", "bananas", "cherries", "kiwi", "melon", "orange", "pineapple", "strawberry") var type := "apple"
-@onready var apple = preload("res://assets/fruits/apple.png")
-@onready var bananas = preload("res://assets/fruits/bananas.png")
-@onready var cherries = preload("res://assets/fruits/cherries.png")
-@onready var kiwi = preload("res://assets/fruits/kiwi.png")
-@onready var melon = preload("res://assets/fruits/melon.png")
-@onready var orange = preload("res://assets/fruits/orange.png")
-@onready var pineapple = preload("res://assets/fruits/pineapple.png")
-@onready var strawberry = preload("res://assets/fruits/strawberry.png")
-@onready var texture_map = {
+const apple = preload("res://assets/fruits/apple.png")
+const bananas = preload("res://assets/fruits/bananas.png")
+const cherries = preload("res://assets/fruits/cherries.png")
+const kiwi = preload("res://assets/fruits/kiwi.png")
+const melon = preload("res://assets/fruits/melon.png")
+const orange = preload("res://assets/fruits/orange.png")
+const pineapple = preload("res://assets/fruits/pineapple.png")
+const strawberry = preload("res://assets/fruits/strawberry.png")
+const texture_map = {
 	"apple" : apple,
 	"bananas" : bananas,
 	"cherries" : cherries,
@@ -25,9 +26,19 @@ extends Area2D
 @onready var animation_player = $AnimationPlayer
 @onready var collision_shape = $CollisionShape2D
 
+@export var random := false :
+	get:
+		return random
+	set(value):
+		random = value
+		if value:
+			type = texture_map.keys()[randi_range(0, texture_map.keys().size() - 1)]
+
 var collected = false
 
 func _ready():
+	if random:
+		type = texture_map.keys()[randi_range(0, texture_map.keys().size() - 1)]
 	animation_player.play("idle")
 
 func set_fruit_texture():

@@ -4,6 +4,9 @@ class_name Box
 @onready var collision_shape = $CollisionShape2D
 @onready var destroy_timer = $DestroyTimer
 @onready var sprite = $AnimatedSprite2D
+@onready var rigid_fruit = preload("res://scripts/fruits/rigid_fruit.tscn")
+@onready var top_spawn_point = $TopSpawnPoint
+@onready var bottom_spawn_point = $BottomSpawnPoint
 
 @export var upward_speed := -160
 @export var downward_speed := 160
@@ -27,10 +30,11 @@ func _physics_process(_delta):
 func hit(player, direction):
 	if is_hit or hp <= 0: return
 	player.velocity.y = downward_speed if direction == 1 else upward_speed
+	player.finite_state_machine.change_state("launch")
 	is_hit = true
 	sprite.play("hit")
 	hp -= 1
-	spawn_fruit()
+	spawn_fruit(direction)
 
 func destroy():
 	sprite.play("destroy")
@@ -42,8 +46,12 @@ func spawn_fragments():
 	var f = fragments.instantiate()
 	add_child(f)
 	
-func spawn_fruit():
-	print("Spawning Fruit")
+func spawn_fruit(direction):
+	var fruit = rigid_fruit.instantiate()
+	randomize()
+	fruit.linear_velocity = Vector2(randf_range(25, 40) * (-1 if bool(randi_range(0,1)) else 1), randf_range(-400, -200) if direction == 1 else 0)
+	fruit.global_position = top_spawn_point.global_position if direction == 1 else bottom_spawn_point.global_position
+	add_sibling(fruit)
 
 func _on_destroy_timer_timeout():
 	queue_free()

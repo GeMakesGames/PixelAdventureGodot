@@ -1,4 +1,5 @@
 extends Path2D
+class_name BrownPlatform
 
 @onready var finite_state_machine = $AnimatableBody2D/FiniteStateMachine
 @onready var animation_player = $AnimatableBody2D/AnimationPlayer
@@ -17,9 +18,3 @@ func _ready():
 
 func _physics_process(delta):
 	finite_state_machine.physics_process(delta)
-
-func _on_player_area_body_entered(_body):
-	has_riders = true
-
-func _on_player_area_body_exited(_body):
-	has_riders = false

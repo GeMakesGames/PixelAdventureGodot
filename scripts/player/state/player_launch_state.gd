@@ -9,5 +9,6 @@ func physics_process(delta):
 	acceleration(delta)
 	object.update_facing_direction()
 	move_and_slide()
+	print(object.velocity)
 	if object.velocity.y >= 0:
 		change_state("fall")

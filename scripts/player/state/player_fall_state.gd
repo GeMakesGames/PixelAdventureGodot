@@ -1,8 +1,10 @@
 extends PlayerBaseState
 
 @onready var coyote_timer = $CoyoteTimer
+var exited
 
 func enter():
+	exited = false
 	object.animation_player.play("fall")
 	if finite_state_machine.previous_state_name != "jump"\
 		and finite_state_machine.previous_state_name != "doublejump"\
@@ -14,6 +16,7 @@ func physics_process(delta):
 	acceleration(delta)
 	object.update_facing_direction()
 	move_and_slide()
+	if exited: return
 	var direction = object.input_manager.x
 	if object.is_on_floor():
 		if object.input_manager.jump_buffer:
@@ -33,3 +36,5 @@ func physics_process(delta):
 		elif object.can_double_jump and object.input_manager.jump_just_pressed:
 			change_state("doublejump")
 
+func exit():
+	exited = true

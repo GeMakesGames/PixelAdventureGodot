@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcn2c2t51lfcq"]
+
+[ext_resource type="Script" path="res://scripts/fruits/rigid_fruit.gd" id="1_rxrsm"]
+[ext_resource type="PackedScene" uid="uid://bbvkscegucpfh" path="res://scripts/fruits/fruit.tscn" id="1_t3qnf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bolmv"]
+bounce = 0.4
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b1l54"]
+radius = 5.0
+
+[node name="RigidFruit" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_bolmv")
+can_sleep = false
+script = ExtResource("1_rxrsm")
+
+[node name="Fruit" parent="." instance=ExtResource("1_t3qnf")]
+random = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b1l54")

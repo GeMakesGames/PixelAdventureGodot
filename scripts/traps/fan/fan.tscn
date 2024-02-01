@@ -143,14 +143,14 @@ size = Vector2(32, 88)
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_y8l8c"]
+[sub_resource type="CurveTexture" id="CurveTexture_bipaw"]
 curve = SubResource("Curve_31o4w")
 
 [sub_resource type="Curve" id="Curve_pvgyn"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.966667, 0.351648), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_y87v3"]
+[sub_resource type="CurveTexture" id="CurveTexture_pv4qa"]
 curve = SubResource("Curve_pvgyn")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nw8ru"]
@@ -162,8 +162,8 @@ flatness = 1.0
 initial_velocity_min = 40.0
 initial_velocity_max = 100.0
 scale_over_velocity_max = 100.0
-scale_over_velocity_curve = SubResource("CurveTexture_y87v3")
-alpha_curve = SubResource("CurveTexture_y8l8c")
+scale_over_velocity_curve = SubResource("CurveTexture_pv4qa")
+alpha_curve = SubResource("CurveTexture_bipaw")
 
 [node name="Fan" type="Area2D"]
 collision_layer = 0

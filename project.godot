@@ -58,6 +58,7 @@ down={
 2d_physics/layer_3="trap"
 2d_physics/layer_4="oneway"
 2d_physics/layer_5="moving_platforms"
+2d_physics/layer_6="block_fragment"
 
 [rendering]
 

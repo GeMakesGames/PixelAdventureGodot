@@ -186,6 +186,3 @@ loop = false
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
 remote_path = NodePath("../../AnimatableBody2D")
 update_rotation = false
-
-[connection signal="body_entered" from="AnimatableBody2D/PlayerArea" to="." method="_on_player_area_body_entered"]
-[connection signal="body_exited" from="AnimatableBody2D/PlayerArea" to="." method="_on_player_area_body_exited"]
