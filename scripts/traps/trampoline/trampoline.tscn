@@ -136,10 +136,11 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xegn"]
-size = Vector2(21, 11)
+size = Vector2(23, 5)
 
-[node name="Trampoline" type="Area2D"]
-collision_layer = 0
+[node name="Trampoline" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_02hnf")
 metadata/_edit_group_ = true
 
@@ -163,8 +164,6 @@ script = ExtResource("5_4icu6")
 script = ExtResource("6_t4pja")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -5.5)
+position = Vector2(0.5, -8.5)
 shape = SubResource("RectangleShape2D_0xegn")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+one_way_collision = true

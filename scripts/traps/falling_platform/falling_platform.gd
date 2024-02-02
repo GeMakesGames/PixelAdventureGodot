@@ -20,8 +20,6 @@ func _ready():
 	delay_timer.wait_time = delay
 	original_position = position
 	offset = original_position + Vector2.DOWN * 10
-	print(original_position)
-	print(offset)
 	finite_state_machine.change_state("on")
 	delay_timer.start()
 	

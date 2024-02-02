@@ -1,8 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbvkscegucpfh"]
+[gd_scene load_steps=17 format=3 uid="uid://bbvkscegucpfh"]
 
 [ext_resource type="Script" path="res://scripts/fruits/fruit.gd" id="1_hyy56"]
 [ext_resource type="Texture2D" uid="uid://bx3d4dkec2gdm" path="res://assets/fruits/apple.png" id="1_ib657"]
 [ext_resource type="Texture2D" uid="uid://do3831x07uv4r" path="res://assets/fruits/Collected.png" id="2_eo88j"]
+[ext_resource type="Texture2D" uid="uid://dkhjlcadko8xy" path="res://assets/fruits/bananas.png" id="4_1r7qg"]
+[ext_resource type="Texture2D" uid="uid://cxmd3n7xxtka5" path="res://assets/fruits/cherries.png" id="5_jok6g"]
+[ext_resource type="Texture2D" uid="uid://xq1pqu145082" path="res://assets/fruits/kiwi.png" id="6_lgeis"]
+[ext_resource type="Texture2D" uid="uid://dqmrfh1b0w3u5" path="res://assets/fruits/melon.png" id="7_i57lf"]
+[ext_resource type="Texture2D" uid="uid://dxnwtetserpvg" path="res://assets/fruits/orange.png" id="8_is64n"]
+[ext_resource type="Texture2D" uid="uid://b6xfcnkiucfuw" path="res://assets/fruits/pineapple.png" id="9_5cmv8"]
+[ext_resource type="Texture2D" uid="uid://20chyv0vmn44" path="res://assets/fruits/strawberry.png" id="10_2ecvf"]
 
 [sub_resource type="Animation" id="Animation_r3e8n"]
 length = 0.001
@@ -210,5 +217,8 @@ autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sw6v1")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("apple", "bananas", "cherries", "kiwi", "melon", "orange", "pineapple", "strawberry"), [ExtResource("1_ib657"), ExtResource("4_1r7qg"), ExtResource("5_jok6g"), ExtResource("6_lgeis"), ExtResource("7_i57lf"), ExtResource("8_is64n"), ExtResource("9_5cmv8"), ExtResource("10_2ecvf")]]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

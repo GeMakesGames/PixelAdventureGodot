@@ -9,6 +9,7 @@ func enter():
 	object.velocity.x = 0
 	direction = object.get_wall_normal().x * -1
 	object.facing_direction = direction
+	object.slide_particle.emitting = true
 	
 func physics_process(delta):
 	var suvat = object.wall_slide_suvat if object.velocity.y <= object.wall_slide_suvat.v else\
@@ -35,4 +36,5 @@ func physics_process(delta):
 		change_state("idle")
 
 func exit():
+	object.slide_particle.emitting = false
 	exited = true

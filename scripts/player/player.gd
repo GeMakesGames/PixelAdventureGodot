@@ -28,8 +28,24 @@ signal died
 @onready var movement_suvat = run_suvat
 @onready var movement_stop_suvat = stop_suvat
 
+var current_terrain_particle_texture = dust_particle_texture
+
+@onready var slide_particle_container = $SlideParticleContainer
+@onready var jump_particle_container = $JumpParticleContainer
+@onready var run_particle = $RunParticle
+@onready var slide_particle = $SlideParticleContainer/SlideParticle
+@onready var launch_particle_position = $LaunchParticlePosition
+
+@onready var jump_particle_resource = preload("res://scripts/player/jump_particle.tscn")
+@onready var launch_particle_resource = preload("res://scripts/player/launch_particle.tscn")
+@onready var ice_particle_texture = preload("res://assets/traps/terrain/ice-particle.png")
+@onready var mud_particle_texture = preload("res://assets/traps/terrain/mud-particle.png")
+@onready var sand_particle_texture = preload("res://assets/traps/terrain/sand-particle.png")
+@onready var dust_particle_texture = preload("res://assets/others/dust_particle.png")
+
 #state related variables
 var hit_direction
+var launch_velocity
 #end of state related variables
 
 var riding_platforms = []
@@ -44,6 +60,8 @@ var facing_direction = 1:
 	set(value):
 		if value == 0: return
 		sprite.flip_h = value == -1
+		run_particle.scale.x = value
+		slide_particle_container.scale.x = value
 		facing_direction = value
 
 var terrain :
@@ -55,17 +73,26 @@ var terrain :
 			"sand":
 				movement_suvat = sand_suvat
 				movement_stop_suvat = stop_suvat
+				run_particle.texture = sand_particle_texture
+				current_terrain_particle_texture = sand_particle_texture
 			"ice":
 				movement_suvat = ice_run_suvat
 				movement_stop_suvat = ice_stop_suvat
+				run_particle.texture = ice_particle_texture
+				current_terrain_particle_texture = ice_particle_texture
 			"mud":
 				movement_suvat = mud_run_suvat
 				movement_stop_suvat = mud_stop_suvat
+				run_particle.texture = mud_particle_texture
+				current_terrain_particle_texture = mud_particle_texture
 			_:
 				movement_suvat = run_suvat
 				movement_stop_suvat = stop_suvat
+				run_particle.texture = dust_particle_texture
+				current_terrain_particle_texture = dust_particle_texture
 
 func _ready():
+	terrain = ""
 	finite_state_machine.change_state("idle")
 	jump_suvat.v = fall_suvat.v # normalize the max fall speed
 	
@@ -86,7 +113,24 @@ func update_facing_direction(direction = input_manager.x):
 func _on_trap_area_body_entered(_body):
 	finite_state_machine.change_state("dead")
 
-
+func emit_launch_particles():
+	var particle = launch_particle_resource.instantiate()
+	launch_particle_position.add_child(particle)
+	particle.amount = min((1.0/500) * abs(launch_velocity.y), 1) * particle.amount
+	particle.emitting = true
+	particle.connect("finished", func(): particle.queue_free())
+	
+func emit_jump_particles():
+	var particle = jump_particle_resource.instantiate()
+	jump_particle_container.add_child(particle)
+	particle.texture = current_terrain_particle_texture
+	particle.emitting = true
+	particle.connect("finished", func(): particle.queue_free())
+	
 func _on_squish_area_body_entered(_body):
 	hit_direction = -1
 	finite_state_machine.change_state("hit")
+
+func launch(_velocity):
+	launch_velocity = _velocity
+	finite_state_machine.change_state("launch")

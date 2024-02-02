@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dut0f6g0y8603"
-path="res://.godot/imported/Mud Particle.png-0ed612691da7195a91b728a50da6ca02.ctex"
+uid="uid://ckhirkulibiel"
+path="res://.godot/imported/idle.png-950024fa0d2a00a59b3dd7870cfacf02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/traps/terrain/Mud Particle.png"
-dest_files=["res://.godot/imported/Mud Particle.png-0ed612691da7195a91b728a50da6ca02.ctex"]
+source_file="res://assets/checkpoints/end/idle.png"
+dest_files=["res://.godot/imported/idle.png-950024fa0d2a00a59b3dd7870cfacf02.ctex"]
 
 [params]
 

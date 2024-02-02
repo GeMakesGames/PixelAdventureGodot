@@ -9,6 +9,7 @@ func enter():
 	# apply a little horizontal boost so the player can gain frames
 	object.velocity.x += object.input_manager.x * (object.run_suvat.v / 2)
 	variable_jump_height = false
+	object.emit_jump_particles()
 
 func physics_process(delta):
 	gravity(delta, object.jump_suvat)

@@ -4,6 +4,7 @@ func enter():
 	object.animation_player.play("run")
 	if finite_state_machine.previous_state_name == "fall":
 		object.land()
+	object.run_particle.emitting = true
 
 func physics_process(delta):
 	var direction = object.input_manager.x;
@@ -17,3 +18,6 @@ func physics_process(delta):
 		change_state("jump")
 	elif direction == 0:
 		change_state("idle")
+
+func exit():
+	object.run_particle.emitting = false

@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://clybo11n3qbgq"]
+
+[ext_resource type="Texture2D" uid="uid://jeb7jjchbvdb" path="res://assets/others/dust_particle.png" id="1_dhe7n"]
+
+[sub_resource type="Curve" id="Curve_yt60h"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fok6x"]
+curve = SubResource("Curve_yt60h")
+
+[sub_resource type="Curve" id="Curve_gc770"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_aqpy6"]
+curve = SubResource("Curve_gc770")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fel3m"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(5, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_curve = SubResource("CurveTexture_aqpy6")
+alpha_curve = SubResource("CurveTexture_fok6x")
+
+[node name="LaunchParticle" type="GPUParticles2D"]
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_fel3m")
+texture = ExtResource("1_dhe7n")
+one_shot = true
+explosiveness = 1.0

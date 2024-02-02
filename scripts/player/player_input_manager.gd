@@ -1,4 +1,5 @@
 extends Node
+class_name InputManager
 
 @onready var jump_buffer_timer = $JumpBufferTimer
 

@@ -29,8 +29,7 @@ func _physics_process(_delta):
 
 func hit(player, direction):
 	if is_hit or hp <= 0: return
-	player.velocity.y = downward_speed if direction == 1 else upward_speed
-	player.finite_state_machine.change_state("launch")
+	player.launch(Vector2(player.velocity.x, downward_speed if direction == 1 else upward_speed))
 	is_hit = true
 	sprite.play("hit")
 	hp -= 1
@@ -49,7 +48,7 @@ func spawn_fragments():
 func spawn_fruit(direction):
 	var fruit = rigid_fruit.instantiate()
 	randomize()
-	fruit.linear_velocity = Vector2(randf_range(25, 40) * (-1 if bool(randi_range(0,1)) else 1), randf_range(-400, -200) if direction == 1 else 0)
+	fruit.linear_velocity = Vector2(randf_range(25, 40) * (-1 if bool(randi_range(0,1)) else 1), randf_range(-400, -200) if direction == 1 else 0.0)
 	fruit.global_position = top_spawn_point.global_position if direction == 1 else bottom_spawn_point.global_position
 	add_sibling(fruit)
 

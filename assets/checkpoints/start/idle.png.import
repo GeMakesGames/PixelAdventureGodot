@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h6ld8ntpggou"
-path="res://.godot/imported/Ice Particle.png-929da9110d541e913cc93e06b4967cbe.ctex"
+uid="uid://cem0odxrif1dv"
+path="res://.godot/imported/idle.png-7277c87be2e0bd570bca1f14b1dcd757.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/traps/terrain/Ice Particle.png"
-dest_files=["res://.godot/imported/Ice Particle.png-929da9110d541e913cc93e06b4967cbe.ctex"]
+source_file="res://assets/checkpoints/start/idle.png"
+dest_files=["res://.godot/imported/idle.png-7277c87be2e0bd570bca1f14b1dcd757.ctex"]
 
 [params]
 

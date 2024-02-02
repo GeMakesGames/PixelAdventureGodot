@@ -30,8 +30,15 @@ func move_and_slide():
 			if not object.riding_platforms.has(platform):
 				object.riding_platforms.append(platform)
 				platform.has_riders = true
-			
-		if collider is Block:
+		
+		if collider is Trampoline and normal.y == -1:
+			collider.activate(object)
+			break
+		
+		if collider is End:
+			if normal.y == -1 and finite_state_machine.current_state_name == "fall":
+				collider.press(object)
+		elif collider is Block:
 			collider.destroy(object, normal)
 		elif collider is Box and normal.y != 0:
 			if normal.y == -1 and not finite_state_machine.current_state_name == "fall":

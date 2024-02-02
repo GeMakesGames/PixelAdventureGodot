@@ -36,5 +36,4 @@ func _translate_direction_to_rotation(direction_to_translate):
 		
 func _on_body_entered(body):
 	finite_state_machine.change_state("hit")
-	body.velocity = direction_vector * 400
-	body.finite_state_machine.change_state("launch")
+	body.launch(direction_vector * 400)
