@@ -1,6 +1,7 @@
 extends PlayerBaseState
 
 func enter():
+	object.randomize_character()
 	object.animation_player.play("spawn")
 
 func physics_process(_delta):

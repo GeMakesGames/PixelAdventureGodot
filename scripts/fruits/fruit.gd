@@ -25,3 +25,4 @@ func _on_body_entered(_body):
 	collected = true
 	animation_player.play("collect")
 	collision_shape.set_deferred("disabled", true)
+	Game.update_score(10)

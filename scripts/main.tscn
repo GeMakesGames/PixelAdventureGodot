@@ -1,0 +1,226 @@
+[gd_scene load_steps=13 format=3 uid="uid://cenbfvi0dfui3"]
+
+[ext_resource type="Texture2D" uid="uid://dncioc7q8bct6" path="res://assets/others/transition.png" id="1_0gbqr"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_1htc5"]
+[ext_resource type="PackedScene" uid="uid://d31pfp8h4ojj2" path="res://world.tscn" id="1_vk41l"]
+[ext_resource type="Script" path="res://scripts/transition.gd" id="2_lngm2"]
+[ext_resource type="Script" path="res://scripts/ParallaxBackground.gd" id="2_srh8c"]
+[ext_resource type="Texture2D" uid="uid://cdoa3v44psi0r" path="res://assets/background/green.png" id="3_42tlv"]
+[ext_resource type="Texture2D" uid="uid://n51m5fft8h0e" path="res://assets/menu/levels/01.png" id="4_0eagl"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="4_lkn63"]
+[ext_resource type="FontFile" uid="uid://brcdkyj8iqipm" path="res://assets/text/text-white.png" id="5_pbk13"]
+
+[sub_resource type="Animation" id="Animation_uhbtt"]
+resource_name = "fade_in"
+length = 1.00001
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Front:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 180)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Front:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(640, 360), Vector2(640, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Back:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-22, -22), Vector2(308, -22)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Back:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(660, 398), Vector2(0, 398)]
+}
+
+[sub_resource type="Animation" id="Animation_2cgp5"]
+resource_name = "fade_out"
+length = 2.00001
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Front:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 180), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Front:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(640, 0), Vector2(640, 360)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Back:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.05, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(308, -22), Vector2(-22, -22)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Back:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.05, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 398), Vector2(660, 398)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3bouj"]
+_data = {
+"fade_in": SubResource("Animation_uhbtt"),
+"fade_out": SubResource("Animation_2cgp5")
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_1htc5")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_srh8c")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(64, 64)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+texture = ExtResource("3_42tlv")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 360)
+
+[node name="MainMenuLayer" type="CanvasLayer" parent="ParallaxBackground"]
+
+[node name="CenterContainer" type="CenterContainer" parent="ParallaxBackground/MainMenuLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ParallaxBackground/MainMenuLayer/CenterContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="ParallaxBackground/MainMenuLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 10
+
+[node name="Button" type="Button" parent="ParallaxBackground/MainMenuLayer/GridContainer"]
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("4_0eagl")
+flat = true
+icon_alignment = 1
+
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("4_lkn63")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUDLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+
+[node name="ScoreLabel" type="RichTextLabel" parent="HUDLayer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_pbk13")
+text = "score: 0"
+
+[node name="TransitionLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_lngm2")
+
+[node name="Front" type="TextureRect" parent="TransitionLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 180.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0gbqr")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Back" type="TextureRect" parent="TransitionLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 308.0
+offset_top = -22.0
+offset_right = -332.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0gbqr")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_3bouj")
+}
+autoplay = "fade_in"
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="World" parent="Level" instance=ExtResource("1_vk41l")]
+visible = false

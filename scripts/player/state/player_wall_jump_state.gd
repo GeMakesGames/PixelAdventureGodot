@@ -9,6 +9,7 @@ func enter():
 		direction = 1
 	object.facing_direction = direction
 	object.velocity.x = object.run_suvat.v * direction * 2.5
+	object.emit_wall_jump_particles()
 
 func physics_process(delta):
 	gravity(delta, object.jump_suvat)

@@ -27,7 +27,7 @@ func physics_process(delta):
 			change_state("idle")
 		else:
 			change_state("fall")
-	elif not object.test_move(object.get_transform(), Vector2(direction, 0)):
+	elif not object.test_move(object.get_global_transform(), Vector2(direction, 0)):
 		if object.is_on_floor():
 			change_state("idle")
 		else:

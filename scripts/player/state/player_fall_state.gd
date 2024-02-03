@@ -1,14 +1,13 @@
 extends PlayerBaseState
 
 @onready var coyote_timer = $CoyoteTimer
+var no_coyote_states = ["jump", "doublejump", "walljump", "launch"]
 var exited
 
 func enter():
 	exited = false
 	object.animation_player.play("fall")
-	if finite_state_machine.previous_state_name != "jump"\
-		and finite_state_machine.previous_state_name != "doublejump"\
-		and finite_state_machine.previous_state_name != "walljump":
+	if not no_coyote_states.has(finite_state_machine.previous_state_name):
 		coyote_timer.start()
 
 func physics_process(delta):

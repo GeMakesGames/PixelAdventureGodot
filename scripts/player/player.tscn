@@ -1,17 +1,17 @@
-[gd_scene load_steps=50 format=3 uid="uid://cl7iw4g0iqb1x"]
+[gd_scene load_steps=71 format=3 uid="uid://cl7iw4g0iqb1x"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_jr3wh"]
-[ext_resource type="Texture2D" uid="uid://cvhy04mfxxfrm" path="res://assets/characters/pink_man/idle.png" id="2_q3rwv"]
 [ext_resource type="Texture2D" uid="uid://jeb7jjchbvdb" path="res://assets/others/dust_particle.png" id="2_s7q2p"]
+[ext_resource type="Texture2D" uid="uid://cvhy04mfxxfrm" path="res://assets/characters/pink_man/pinkman-idle.png" id="3_h3oyb"]
 [ext_resource type="Texture2D" uid="uid://bdahkq504fo4q" path="res://assets/characters/desappearing.png" id="3_y4cfs"]
-[ext_resource type="Texture2D" uid="uid://n4fn8xt5y1vh" path="res://assets/characters/pink_man/double-jump.png" id="4_3mr7y"]
-[ext_resource type="Texture2D" uid="uid://byiajheeyajd3" path="res://assets/characters/pink_man/fall.png" id="5_np125"]
-[ext_resource type="Texture2D" uid="uid://dtkmgl80ag7hd" path="res://assets/characters/pink_man/hit.png" id="6_8757t"]
-[ext_resource type="Texture2D" uid="uid://utyrx85ec1le" path="res://assets/characters/pink_man/jump.png" id="7_cdbgj"]
-[ext_resource type="Texture2D" uid="uid://dnpkrd88oxtwr" path="res://assets/characters/pink_man/run.png" id="8_jt066"]
+[ext_resource type="Texture2D" uid="uid://n4fn8xt5y1vh" path="res://assets/characters/pink_man/pinkman-double-jump.png" id="5_bw3ty"]
+[ext_resource type="Texture2D" uid="uid://byiajheeyajd3" path="res://assets/characters/pink_man/pinkman-fall.png" id="6_aeal0"]
+[ext_resource type="Texture2D" uid="uid://dtkmgl80ag7hd" path="res://assets/characters/pink_man/pinkman-hit.png" id="7_q22bg"]
+[ext_resource type="Texture2D" uid="uid://utyrx85ec1le" path="res://assets/characters/pink_man/pinkman-jump.png" id="8_xuck7"]
+[ext_resource type="Texture2D" uid="uid://dnpkrd88oxtwr" path="res://assets/characters/pink_man/pinkman-run.png" id="9_k8b4b"]
 [ext_resource type="Texture2D" uid="uid://rdi7kaeauv25" path="res://assets/characters/appearing.png" id="9_o6aaq"]
-[ext_resource type="Texture2D" uid="uid://bfv74pivnwx6r" path="res://assets/characters/pink_man/wall-slide.png" id="10_p0xxj"]
 [ext_resource type="Script" path="res://scripts/player/player_input_manager.gd" id="11_svfe1"]
+[ext_resource type="Texture2D" uid="uid://bfv74pivnwx6r" path="res://assets/characters/pink_man/pinkman-wall-slide.png" id="11_tmjdb"]
 [ext_resource type="Script" path="res://scripts/fsm/finite_state_machine.gd" id="12_ti551"]
 [ext_resource type="Script" path="res://scripts/player/state/player_idle_state.gd" id="13_p34e5"]
 [ext_resource type="Script" path="res://scripts/player/state/player_fall_state.gd" id="14_ltjr7"]
@@ -24,6 +24,27 @@
 [ext_resource type="Script" path="res://scripts/player/state/player_spawn_state.gd" id="21_u7wsf"]
 [ext_resource type="Script" path="res://scripts/player/state/player_launch_state.gd" id="22_vgb4r"]
 [ext_resource type="Script" path="res://scripts/player/state/player_hit_state.gd" id="23_ns0od"]
+[ext_resource type="Texture2D" uid="uid://oj1jgxsobnje" path="res://assets/characters/ninja_frog/ninja-frog-double-jump.png" id="25_fyw3g"]
+[ext_resource type="Texture2D" uid="uid://bagufoi11ky0b" path="res://assets/characters/virtual_guy/virtual-guy-double-jump.png" id="25_tmrbt"]
+[ext_resource type="Texture2D" uid="uid://gfqqd3x1ebhi" path="res://assets/characters/mask_dude/mask-dude-double-jump.png" id="25_ty62g"]
+[ext_resource type="Texture2D" uid="uid://c5e58kiwpdw1p" path="res://assets/characters/mask_dude/mask-dude-fall.png" id="26_pvigy"]
+[ext_resource type="Texture2D" uid="uid://3onqsy1km1w0" path="res://assets/characters/virtual_guy/virtual-guy-fall.png" id="26_wwh45"]
+[ext_resource type="Texture2D" uid="uid://c7ocny6dbjljt" path="res://assets/characters/ninja_frog/ninja-frog-fall.png" id="26_x6gfi"]
+[ext_resource type="Texture2D" uid="uid://cvckq0uj8g80t" path="res://assets/characters/mask_dude/mask-dude-hit.png" id="27_0ende"]
+[ext_resource type="Texture2D" uid="uid://c0pdq1g7ybuon" path="res://assets/characters/virtual_guy/virtual-guy-hit.png" id="27_sc2rf"]
+[ext_resource type="Texture2D" uid="uid://giudj4bnqoal" path="res://assets/characters/ninja_frog/ninja-frog-hit.png" id="27_uh8ls"]
+[ext_resource type="Texture2D" uid="uid://doa3y75jv5wqn" path="res://assets/characters/virtual_guy/virtual-guy-idle.png" id="28_5y6bi"]
+[ext_resource type="Texture2D" uid="uid://do53wul3dhukt" path="res://assets/characters/ninja_frog/ninja-frog-idle.png" id="28_bqywm"]
+[ext_resource type="Texture2D" uid="uid://d06u2rvsr2i11" path="res://assets/characters/mask_dude/mask-dude-idle.png" id="28_yk4r8"]
+[ext_resource type="Texture2D" uid="uid://bdxwiq0w34fni" path="res://assets/characters/mask_dude/mask-dude-jump.png" id="29_5p6cm"]
+[ext_resource type="Texture2D" uid="uid://dwnk6t08nhpoq" path="res://assets/characters/virtual_guy/virtual-guy-jump.png" id="29_ega1q"]
+[ext_resource type="Texture2D" uid="uid://bsdctjcunr6rs" path="res://assets/characters/ninja_frog/ninja-frog-jump.png" id="29_yikxh"]
+[ext_resource type="Texture2D" uid="uid://b8rukehsrnmhs" path="res://assets/characters/ninja_frog/ninja-frog-run.png" id="30_67el3"]
+[ext_resource type="Texture2D" uid="uid://l7wujjh6ey6o" path="res://assets/characters/mask_dude/mask-dude-run.png" id="30_dlucd"]
+[ext_resource type="Texture2D" uid="uid://bbv7fhyscfret" path="res://assets/characters/virtual_guy/virtual-guy-run.png" id="30_l45kc"]
+[ext_resource type="Texture2D" uid="uid://b0ytd05wlvoh7" path="res://assets/characters/ninja_frog/ninja-frog-wall-slide.png" id="31_dogsk"]
+[ext_resource type="Texture2D" uid="uid://dhbwcgituokqf" path="res://assets/characters/virtual_guy/virtual-guy-wall-slide.png" id="31_nplpv"]
+[ext_resource type="Texture2D" uid="uid://jwcsrusn4ukn" path="res://assets/characters/mask_dude/mask-dude-wall-slide.png" id="31_xduon"]
 
 [sub_resource type="Curve" id="Curve_iti4v"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -94,7 +115,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_q3rwv")]
+"values": [ExtResource("3_h3oyb")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -169,7 +190,7 @@ loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -177,7 +198,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_3mr7y")]
+"values": [ExtResource("5_bw3ty")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -203,6 +224,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["double-jump"],
+"method": &"set_animation_texture"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_te4p8"]
 resource_name = "fall"
@@ -210,7 +245,7 @@ length = 0.050005
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -218,7 +253,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_np125")]
+"values": [ExtResource("6_aeal0")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -244,6 +279,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["fall"],
+"method": &"set_animation_texture"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_iu5bb"]
 resource_name = "hit"
@@ -251,7 +300,7 @@ length = 0.350005
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -259,7 +308,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_8757t")]
+"values": [ExtResource("7_q22bg")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -285,6 +334,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["hit"],
+"method": &"set_animation_texture"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_u10ea"]
 resource_name = "idle"
@@ -293,7 +356,7 @@ loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -301,7 +364,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_q3rwv")]
+"values": [ExtResource("3_h3oyb")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -327,6 +390,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["idle"],
+"method": &"set_animation_texture"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_nc118"]
 resource_name = "jump"
@@ -334,7 +411,7 @@ length = 0.050005
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -342,7 +419,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_cdbgj")]
+"values": [ExtResource("8_xuck7")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -368,6 +445,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["jump"],
+"method": &"set_animation_texture"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_80wid"]
 resource_name = "run"
@@ -376,7 +467,7 @@ loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -384,7 +475,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("8_jt066")]
+"values": [ExtResource("9_k8b4b")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -409,6 +500,20 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["run"],
+"method": &"set_animation_texture"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_8s7kf"]
@@ -459,7 +564,7 @@ loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -467,7 +572,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("10_p0xxj")]
+"values": [ExtResource("11_tmjdb")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -492,6 +597,20 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["wall-slide"],
+"method": &"set_animation_texture"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8a2fx"]
@@ -527,6 +646,11 @@ position = Vector2(0, 16)
 [node name="JumpParticleContainer" type="Node2D" parent="."]
 position = Vector2(0, 16)
 
+[node name="WallJumpParticleContainer" type="Node2D" parent="."]
+
+[node name="SubContainer" type="Node2D" parent="WallJumpParticleContainer"]
+position = Vector2(-6, 15)
+
 [node name="RunParticle" type="GPUParticles2D" parent="."]
 position = Vector2(0, 14)
 emitting = false
@@ -535,7 +659,7 @@ process_material = SubResource("ParticleProcessMaterial_rspuw")
 texture = ExtResource("2_s7q2p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_q3rwv")
+texture = ExtResource("3_h3oyb")
 hframes = 11
 
 [node name="SlideParticleContainer" type="Node2D" parent="."]
@@ -568,6 +692,7 @@ one_shot = true
 
 [node name="FiniteStateMachine" type="Node" parent="."]
 script = ExtResource("12_ti551")
+debug = true
 
 [node name="Idle" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("13_p34e5")
@@ -619,6 +744,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SquishArea"]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_23hqv")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("mask-dude-double-jump", "mask-dude-fall", "mask-dude-hit", "mask-dude-idle", "mask-dude-jump", "mask-dude-run", "mask-dude-wall-slide", "ninja-frog-double-jump", "ninja-frog-fall", "ninja-frog-hit", "ninja-frog-idle", "ninja-frog-jump", "ninja-frog-run", "ninja-frog-wall-slide", "pinkman-double-jump", "pinkman-fall", "pinkman-hit", "pinkman-idle", "pinkman-jump", "pinkman-run", "pinkman-wall-slide", "virtual-guy-double-jump", "virtual-guy-fall", "virtual-guy-hit", "virtual-guy-idle", "virtual-guy-jump", "virtual-guy-run", "virtual-guy-wall-slide"), [ExtResource("25_ty62g"), ExtResource("26_pvigy"), ExtResource("27_0ende"), ExtResource("28_yk4r8"), ExtResource("29_5p6cm"), ExtResource("30_dlucd"), ExtResource("31_xduon"), ExtResource("25_fyw3g"), ExtResource("26_x6gfi"), ExtResource("27_uh8ls"), ExtResource("28_bqywm"), ExtResource("29_yikxh"), ExtResource("30_67el3"), ExtResource("31_dogsk"), ExtResource("5_bw3ty"), ExtResource("6_aeal0"), ExtResource("7_q22bg"), ExtResource("3_h3oyb"), ExtResource("8_xuck7"), ExtResource("9_k8b4b"), ExtResource("11_tmjdb"), ExtResource("25_tmrbt"), ExtResource("26_wwh45"), ExtResource("27_sc2rf"), ExtResource("28_5y6bi"), ExtResource("29_ega1q"), ExtResource("30_l45kc"), ExtResource("31_nplpv")]]
 
 [connection signal="timeout" from="FiniteStateMachine/Hit/Timer" to="FiniteStateMachine/Hit" method="_on_timer_timeout"]
 [connection signal="body_entered" from="SquishArea" to="." method="_on_squish_area_body_entered"]

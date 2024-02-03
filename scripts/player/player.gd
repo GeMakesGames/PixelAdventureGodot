@@ -3,6 +3,7 @@ class_name Player
 
 signal died
 
+@onready var resource_preloader = $ResourcePreloader
 @onready var input_manager = $InputManager
 @onready var finite_state_machine = $FiniteStateMachine
 @onready var animation_player = $AnimationPlayer
@@ -32,16 +33,22 @@ var current_terrain_particle_texture = dust_particle_texture
 
 @onready var slide_particle_container = $SlideParticleContainer
 @onready var jump_particle_container = $JumpParticleContainer
+@onready var wall_jump_particle_container = $WallJumpParticleContainer
+@onready var wall_jump_particle_sub_container = $WallJumpParticleContainer/SubContainer
 @onready var run_particle = $RunParticle
 @onready var slide_particle = $SlideParticleContainer/SlideParticle
 @onready var launch_particle_position = $LaunchParticlePosition
 
+@onready var wall_jump_particle_resource = preload("res://scripts/player/wall_jump_particle.tscn")
 @onready var jump_particle_resource = preload("res://scripts/player/jump_particle.tscn")
 @onready var launch_particle_resource = preload("res://scripts/player/launch_particle.tscn")
 @onready var ice_particle_texture = preload("res://assets/traps/terrain/ice-particle.png")
 @onready var mud_particle_texture = preload("res://assets/traps/terrain/mud-particle.png")
 @onready var sand_particle_texture = preload("res://assets/traps/terrain/sand-particle.png")
 @onready var dust_particle_texture = preload("res://assets/others/dust_particle.png")
+
+@onready var available_characters = ["virtual-guy", "pinkman", "ninja-frog", "mask-dude"]
+var character = "pinkman"
 
 #state related variables
 var hit_direction
@@ -63,6 +70,7 @@ var facing_direction = 1:
 		run_particle.scale.x = value
 		slide_particle_container.scale.x = value
 		facing_direction = value
+		wall_jump_particle_container.scale.x = value
 
 var terrain :
 	get:
@@ -92,10 +100,13 @@ var terrain :
 				current_terrain_particle_texture = dust_particle_texture
 
 func _ready():
+	randomize_character()
 	terrain = ""
 	finite_state_machine.change_state("idle")
 	jump_suvat.v = fall_suvat.v # normalize the max fall speed
-	
+
+func randomize_character():
+	character = available_characters[randi() % available_characters.size()]
 #func _process(_delta):
 	#print("FPS: %d" % Engine.get_frames_per_second())
 
@@ -116,16 +127,22 @@ func _on_trap_area_body_entered(_body):
 func emit_launch_particles():
 	var particle = launch_particle_resource.instantiate()
 	launch_particle_position.add_child(particle)
-	particle.amount = min((1.0/500) * abs(launch_velocity.y), 1) * particle.amount
+	particle.amount = min((1.0/500) * abs(launch_velocity.y), 2) * particle.amount
 	particle.emitting = true
 	particle.connect("finished", func(): particle.queue_free())
-	
+
+func _emit_jump_particles(container, particle_resource, texture = current_terrain_particle_texture):
+	var particle = particle_resource.instantiate()
+	container.add_child(particle)
+	particle.texture = texture
+	particle.emitting = true
+	particle.connect("finished", func(): particle.queue_free())
+
 func emit_jump_particles():
-	var particle = jump_particle_resource.instantiate()
-	jump_particle_container.add_child(particle)
-	particle.texture = current_terrain_particle_texture
-	particle.emitting = true
-	particle.connect("finished", func(): particle.queue_free())
+	_emit_jump_particles(jump_particle_container, jump_particle_resource)
+	
+func emit_wall_jump_particles():
+	_emit_jump_particles(wall_jump_particle_sub_container, wall_jump_particle_resource, dust_particle_texture)
 	
 func _on_squish_area_body_entered(_body):
 	hit_direction = -1
@@ -134,3 +151,6 @@ func _on_squish_area_body_entered(_body):
 func launch(_velocity):
 	launch_velocity = _velocity
 	finite_state_machine.change_state("launch")
+
+func set_animation_texture(suffix):
+	sprite.texture = resource_preloader.get_resource("%s-%s" % [character, suffix])

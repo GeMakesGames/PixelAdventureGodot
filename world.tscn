@@ -1,9 +1,8 @@
-[gd_scene load_steps=50 format=3 uid="uid://d31pfp8h4ojj2"]
+[gd_scene load_steps=49 format=3 uid="uid://d31pfp8h4ojj2"]
 
-[ext_resource type="Texture2D" uid="uid://b01ors02bn2q5" path="res://assets/background/yellow.png" id="1_fp538"]
 [ext_resource type="Script" path="res://scripts/world/world.gd" id="1_kdde7"]
 [ext_resource type="Texture2D" uid="uid://qdu80cwg78qj" path="res://assets/terrain/terrain.png" id="1_twavd"]
-[ext_resource type="Script" path="res://scripts/background/scrolling_background.gd" id="2_bwljl"]
+[ext_resource type="PackedScene" uid="uid://c4colhi6ia2vf" path="res://scripts/background/scrolling_background.tscn" id="2_c8kro"]
 [ext_resource type="Texture2D" uid="uid://do5ahdyy1niqw" path="res://assets/terrain/shadow.png" id="4_l4r0t"]
 [ext_resource type="PackedScene" uid="uid://7vicienpf4o5" path="res://scripts/traps/fire/fire.tscn" id="5_6onq2"]
 [ext_resource type="PackedScene" uid="uid://dms36e3b807p5" path="res://scripts/traps/spike/spike.tscn" id="6_bcme3"]
@@ -1631,16 +1630,9 @@ size = Vector2(34, 8)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_kdde7")
-spawn = Vector2i(32, 288)
+spawn = Vector2i(56, 296)
 
-[node name="Background" type="Sprite2D" parent="."]
-texture_repeat = 2
-position = Vector2(320, 180)
-texture = ExtResource("1_fp538")
-region_enabled = true
-region_rect = Rect2(0, 0, 640, 360)
-script = ExtResource("2_bwljl")
-speed = 64
+[node name="ScrollingBackground" parent="." instance=ExtResource("2_c8kro")]
 
 [node name="ShadowTileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_qqxp1")
@@ -1685,10 +1677,6 @@ position = Vector2(496, 176)
 type = "pineapple"
 
 [node name="Fruit8" parent="Fruits" instance=ExtResource("43_whfea")]
-position = Vector2(528, 176)
-type = "strawberry"
-
-[node name="Fruit9" parent="Fruits" instance=ExtResource("43_whfea")]
 position = Vector2(528, 176)
 type = "strawberry"
 

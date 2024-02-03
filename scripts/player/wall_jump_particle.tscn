@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://raso8fnbpug0"]
+
+[ext_resource type="Texture2D" uid="uid://jeb7jjchbvdb" path="res://assets/others/dust_particle.png" id="1_owb4y"]
+
+[sub_resource type="Curve" id="Curve_rb0l6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hnm56"]
+curve = SubResource("Curve_rb0l6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_71pqd"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 5, 1)
+direction = Vector3(0, -1, 0)
+spread = 20.0
+initial_velocity_min = 40.0
+initial_velocity_max = 50.0
+scale_curve = SubResource("CurveTexture_hnm56")
+turbulence_enabled = true
+
+[node name="WallJumpParticle" type="GPUParticles2D"]
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_71pqd")
+texture = ExtResource("1_owb4y")
+one_shot = true
+explosiveness = 1.0
