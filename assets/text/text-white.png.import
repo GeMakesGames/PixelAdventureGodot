@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/text-white.png-d35ab17c74c8d2fde953ec89ff4920
 
 [params]
 
-character_ranges=PackedStringArray("\'a\'-\'j\'", "\'k\'-\'t\'", "\'u\'-\'z\'", "\' \'-\' \'", "0-0", "0-0", "0-0", "48-57", "\'.\'", "\',\'", "\':\'", "\'?\'", "\'!\'", "\'(\'", "\')\'", "\'+\'", "\'-\'")
+character_ranges=PackedStringArray("\'a\'-\'j\'", "\'k\'-\'t\'", "\'u\'-\'z\'", "\' \'-\' \'", "0-0", "0-0", "0-0", "48-57", "\'.\'", "\',\'", "\':\'", "\'?\'", "\'!\'", "\'(\'", "\')\'", "\'+\'", "45")
 columns=10
 rows=5
 image_margin=Rect2i(0, 0, 0, 0)

@@ -1,13 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4colhi6ia2vf"]
+[gd_scene load_steps=4 format=3 uid="uid://c4colhi6ia2vf"]
 
 [ext_resource type="Texture2D" uid="uid://b01ors02bn2q5" path="res://assets/background/yellow.png" id="1_vux3k"]
 [ext_resource type="Script" path="res://scripts/background/scrolling_background.gd" id="2_mdkgu"]
-[ext_resource type="Texture2D" uid="uid://cwvbccudrx4gx" path="res://assets/background/blue.png" id="3_jueib"]
-[ext_resource type="Texture2D" uid="uid://buky426fac6lc" path="res://assets/background/brown.png" id="4_ok61u"]
-[ext_resource type="Texture2D" uid="uid://brkgrmfm31m00" path="res://assets/background/gray.png" id="5_kcpnx"]
-[ext_resource type="Texture2D" uid="uid://cdoa3v44psi0r" path="res://assets/background/green.png" id="6_uqe0m"]
-[ext_resource type="Texture2D" uid="uid://lmhobuf82x8g" path="res://assets/background/pink.png" id="7_oxbsl"]
-[ext_resource type="Texture2D" uid="uid://ccw7knphruk4n" path="res://assets/background/purple.png" id="8_8tcov"]
+[ext_resource type="PackedScene" uid="uid://b2lm783abrwtl" path="res://scripts/background/background_resources.tscn" id="3_npmr7"]
 
 [node name="ScrollingBackground" type="Sprite2D"]
 texture_repeat = 2
@@ -18,5 +13,4 @@ region_rect = Rect2(0, 0, 640, 360)
 script = ExtResource("2_mdkgu")
 speed = 64
 
-[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [PackedStringArray("blue", "brown", "gray", "green", "pink", "purple", "yellow"), [ExtResource("3_jueib"), ExtResource("4_ok61u"), ExtResource("5_kcpnx"), ExtResource("6_uqe0m"), ExtResource("7_oxbsl"), ExtResource("8_8tcov"), ExtResource("1_vux3k")]]
+[node name="BackgroundResources" parent="." instance=ExtResource("3_npmr7")]

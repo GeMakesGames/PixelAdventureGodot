@@ -1,7 +1,7 @@
 extends Sprite2D
 
 @export var speed : int
-@onready var resource_preloader = $ResourcePreloader
+@onready var resource_preloader = $BackgroundResources
 
 var initial_position
 var w

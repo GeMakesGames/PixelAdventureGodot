@@ -1,0 +1,12 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2lm783abrwtl"]
+
+[ext_resource type="Texture2D" uid="uid://cwvbccudrx4gx" path="res://assets/background/blue.png" id="1_bhysl"]
+[ext_resource type="Texture2D" uid="uid://buky426fac6lc" path="res://assets/background/brown.png" id="2_a3gs0"]
+[ext_resource type="Texture2D" uid="uid://brkgrmfm31m00" path="res://assets/background/gray.png" id="3_l4yow"]
+[ext_resource type="Texture2D" uid="uid://cdoa3v44psi0r" path="res://assets/background/green.png" id="4_c7gvb"]
+[ext_resource type="Texture2D" uid="uid://lmhobuf82x8g" path="res://assets/background/pink.png" id="5_5u761"]
+[ext_resource type="Texture2D" uid="uid://ccw7knphruk4n" path="res://assets/background/purple.png" id="6_cboli"]
+[ext_resource type="Texture2D" uid="uid://b01ors02bn2q5" path="res://assets/background/yellow.png" id="7_emydm"]
+
+[node name="BackgroundResources" type="ResourcePreloader"]
+resources = [PackedStringArray("blue", "brown", "gray", "green", "pink", "purple", "yellow"), [ExtResource("1_bhysl"), ExtResource("2_a3gs0"), ExtResource("3_l4yow"), ExtResource("4_c7gvb"), ExtResource("5_5u761"), ExtResource("6_cboli"), ExtResource("7_emydm")]]
