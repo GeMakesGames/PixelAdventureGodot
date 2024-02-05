@@ -1,5 +1,7 @@
 extends Area2D
 
+signal activated
+
 @onready var sprite = $AnimatedSprite2D
 
 var active:
@@ -12,6 +14,7 @@ var active:
 			sprite.play("flag_out")
 			deploying = true
 			disable = false
+			activated.emit(self)
 		else:
 			sprite.play("flag_in")
 			disable = true
@@ -33,6 +36,5 @@ func _process(_delta):
 func _on_body_entered(_body):
 	active = true
 
-#TODO future me remove this!
-func _on_body_exited(_body):
-	active = false
+func get_spawn_position():
+	return global_position

@@ -1,17 +1,35 @@
 extends CanvasLayer
 
+signal hidden
+signal shown
+
 var selection = 0
 
 @onready var start_label = $SelectionContainer/VBoxContainer/StartLabel
 @onready var controls_label = $SelectionContainer/VBoxContainer/ControlsLabel
+@onready var credits_label = $SelectionContainer/VBoxContainer/CreditsLabel
 @onready var quit_label = $SelectionContainer/VBoxContainer/QuitLabel
-@onready var selection_indexes = [start_label, controls_label, quit_label]
+@onready var selection_indexes = [start_label, controls_label, credits_label, quit_label]
+
+
 
 func _ready():
+	set_process_input(false)
 	_update_selection()
 
 func hide_menu():
+	Game.main.transition.fade_out()
+	set_process_input(false)
+	await Game.main.transition.finished
 	hide()
+	hidden.emit()
+
+func show_menu():
+	show()
+	Game.main.transition.fade_in()
+	await Game.main.transition.finished
+	set_process_input(true)
+	shown.emit()
 
 
 func _input(event):

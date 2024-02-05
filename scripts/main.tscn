@@ -1,8 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cenbfvi0dfui3"]
+[gd_scene load_steps=19 format=3 uid="uid://cenbfvi0dfui3"]
 
 [ext_resource type="Texture2D" uid="uid://dncioc7q8bct6" path="res://assets/others/transition.png" id="1_0gbqr"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1htc5"]
-[ext_resource type="PackedScene" uid="uid://d31pfp8h4ojj2" path="res://scripts/level/level_1.tscn" id="1_vk41l"]
+[ext_resource type="PackedScene" uid="uid://yke2rf7rplsb" path="res://scripts/level/level_1.tscn" id="1_vk41l"]
 [ext_resource type="Script" path="res://scripts/menu/start_menu/start_menu.gd" id="2_k11uh"]
 [ext_resource type="Script" path="res://scripts/transition.gd" id="2_lngm2"]
 [ext_resource type="Texture2D" uid="uid://cdoa3v44psi0r" path="res://assets/background/green.png" id="3_42tlv"]
@@ -11,9 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://b2lm783abrwtl" path="res://scripts/background/background_resources.tscn" id="4_vxcwe"]
 [ext_resource type="FontFile" uid="uid://brcdkyj8iqipm" path="res://assets/text/text-white.png" id="5_pbk13"]
 [ext_resource type="Script" path="res://scripts/menu/start_menu/start_label.gd" id="7_07qhf"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="11_elgg5"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tl0jt"]
 load_path = "res://.godot/imported/01.png-2411263f79530abf8255bb6c0490399e.ctex"
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_j7gkl"]
 
 [sub_resource type="Animation" id="Animation_jtsci"]
 length = 0.001
@@ -234,6 +237,7 @@ region_rect = Rect2(0, 0, 640, 360)
 [node name="BackgroundResources" parent="ParallaxBackground" instance=ExtResource("4_vxcwe")]
 
 [node name="StartMenu" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("2_k11uh")
 
 [node name="LevelSelectionLayer" type="CanvasLayer" parent="StartMenu"]
@@ -691,7 +695,7 @@ theme_override_fonts/font = ExtResource("5_pbk13")
 theme_override_font_sizes/font_size = 45
 text = "pixel adventure"
 
-[node name="FullScreenLabelContainer" type="MarginContainer" parent="StartMenu"]
+[node name="GeMakesGamesContainer" type="MarginContainer" parent="StartMenu"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -702,11 +706,11 @@ size_flags_vertical = 8
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="FullScreenLabel" type="Label" parent="StartMenu/FullScreenLabelContainer"]
+[node name="Label" type="Label" parent="StartMenu/GeMakesGamesContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("5_pbk13")
-text = "f11 - full screen"
+text = "a game by gemakesgames"
 
 [node name="SelectionContainer" type="MarginContainer" parent="StartMenu"]
 anchors_preset = 11
@@ -715,6 +719,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 80
 
@@ -739,12 +745,31 @@ theme_override_fonts/font = ExtResource("5_pbk13")
 theme_override_font_sizes/font_size = 30
 text = "controls"
 
+[node name="CreditsLabel" type="Label" parent="StartMenu/SelectionContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("5_pbk13")
+theme_override_font_sizes/font_size = 30
+text = "credits"
+
 [node name="QuitLabel" type="Label" parent="StartMenu/SelectionContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("5_pbk13")
 theme_override_font_sizes/font_size = 30
 text = "quit"
+
+[node name="PauseBackground" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="PauseBackground"]
+modulate = Color(0, 0, 0, 0.0980392)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_j7gkl")
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -765,6 +790,7 @@ theme_override_fonts/normal_font = ExtResource("5_pbk13")
 text = "score: 0"
 
 [node name="TransitionLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 visible = false
 script = ExtResource("2_lngm2")
 
@@ -788,8 +814,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 640.0
-offset_bottom = 360.0
+offset_right = 10240.0
+offset_bottom = 5760.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_0gbqr")
@@ -803,14 +829,15 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -44.0
-offset_right = 684.0
-offset_bottom = 360.0
+offset_right = 10284.0
+offset_bottom = 5760.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_0gbqr")
 stretch_mode = 1
 
-[node name="Level" type="Node2D" parent="."]
-visible = false
+[node name="World" type="Node2D" parent="."]
+script = ExtResource("11_elgg5")
 
-[node name="Level1" parent="Level" instance=ExtResource("1_vk41l")]
+[node name="ResourcePreloader" type="ResourcePreloader" parent="World"]
+resources = [PackedStringArray("level_1"), [ExtResource("1_vk41l")]]

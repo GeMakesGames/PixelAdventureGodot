@@ -94,9 +94,11 @@ _data = {
 size = Vector2(32, 5)
 
 [node name="GreyPlatform" type="Path2D"]
+z_index = 1
 script = ExtResource("1_jtefj")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(-0.3125, 0)
 collision_layer = 8
 collision_mask = 0
 

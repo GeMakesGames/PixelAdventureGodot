@@ -166,6 +166,7 @@ scale_over_velocity_curve = SubResource("CurveTexture_pv4qa")
 alpha_curve = SubResource("CurveTexture_bipaw")
 
 [node name="Fan" type="Area2D"]
+z_index = 1
 collision_layer = 0
 script = ExtResource("1_f5uxd")
 start_time = 3.0

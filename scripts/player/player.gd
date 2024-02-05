@@ -2,6 +2,8 @@ extends CharacterBody2D
 class_name Player
 
 signal died
+signal disappeared
+signal spawned
 
 @onready var resource_preloader = $ResourcePreloader
 @onready var input_manager = $InputManager
@@ -100,9 +102,9 @@ var terrain :
 				current_terrain_particle_texture = dust_particle_texture
 
 func _ready():
+	Game.player = self
 	randomize_character()
 	terrain = ""
-	finite_state_machine.change_state("idle")
 	jump_suvat.v = fall_suvat.v # normalize the max fall speed
 
 func randomize_character():

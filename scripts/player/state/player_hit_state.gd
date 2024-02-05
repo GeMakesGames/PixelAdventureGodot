@@ -20,4 +20,4 @@ func exit():
 	object.velocity = Vector2.ZERO
 
 func _on_timer_timeout():
-	object.died.emit(object);
+	object.died.emit();

@@ -52,6 +52,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45e4m"]
 
 [node name="Box" type="StaticBody2D"]
+z_index = 2
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("3_cguks")

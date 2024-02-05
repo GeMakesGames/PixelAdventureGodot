@@ -1,7 +1,6 @@
 extends Label
 
 func select():
-	Game.main.transition.fade_out()
-	await Game.main.transition.finished
 	Game.main.start_menu.hide_menu()
-	Game.main.transition.fade_in()
+	await Game.main.start_menu.hidden
+	Game.main.world.load_level("level_1")

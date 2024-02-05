@@ -469,7 +469,7 @@ animations = [{
 size = Vector2(9, 46)
 
 [node name="CheckpointPole" type="Area2D"]
-position = Vector2(115, 320)
+z_index = 3
 collision_layer = 0
 script = ExtResource("1_d6dbe")
 

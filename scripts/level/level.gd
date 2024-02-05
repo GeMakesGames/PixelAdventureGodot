@@ -1,13 +1,16 @@
 extends Node2D
 
-@export var spawn : Vector2i
+@onready var checkpoints = $Checkpoints
 
-func _on_player_died(player):
+func _ready():
+	Game.player.died.connect(_on_player_died)
+
+func _on_player_died():
 	Game.main.transition.fade_out()
-	player.visible = false
+	Game.player.visible = false
 	await Game.main.transition.finished
 	Game.main.transition.fade_in()
 	await Game.main.transition.finished
-	player.position = spawn
-	player.finite_state_machine.change_state("spawn")
-	player.facing_direction = 1
+	Game.player.global_position = checkpoints.active_checkpoint.get_spawn_position()
+	Game.player.finite_state_machine.change_state("spawn")
+	Game.player.facing_direction = 1

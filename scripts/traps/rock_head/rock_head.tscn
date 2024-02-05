@@ -313,6 +313,7 @@ _data = {
 size = Vector2(32, 32)
 
 [node name="RockHead" type="CharacterBody2D"]
+z_index = 4
 collision_layer = 16
 collision_mask = 2
 floor_stop_on_slope = false

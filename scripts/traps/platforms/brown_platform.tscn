@@ -143,6 +143,7 @@ size = Vector2(32, 5)
 size = Vector2(32, 1)
 
 [node name="BrownPlatform" type="Path2D"]
+z_index = 1
 script = ExtResource("1_ubiy3")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
