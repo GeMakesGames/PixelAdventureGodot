@@ -70,9 +70,9 @@ wait_time = 4.5
 one_shot = true
 
 [node name="TopSpawnPoint" type="Node2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(0, -17)
 
 [node name="BottomSpawnPoint" type="Node2D" parent="."]
-position = Vector2(0, 16)
+position = Vector2(0, 17)
 
 [connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]

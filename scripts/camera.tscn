@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsdyasfbhasrq"]
+
+[ext_resource type="Script" path="res://scripts/camera.gd" id="1_ucjk2"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p1xrg"]
+noise_type = 3
+
+[node name="Camera2D" type="Camera2D"]
+ignore_rotation = false
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 360
+limit_smoothed = true
+position_smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("1_ucjk2")
+noise = SubResource("FastNoiseLite_p1xrg")

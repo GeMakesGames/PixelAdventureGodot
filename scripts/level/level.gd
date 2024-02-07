@@ -14,3 +14,4 @@ func _on_player_died():
 	Game.player.global_position = checkpoints.active_checkpoint.get_spawn_position()
 	Game.player.finite_state_machine.change_state("spawn")
 	Game.player.facing_direction = 1
+	Game.deaths += 1

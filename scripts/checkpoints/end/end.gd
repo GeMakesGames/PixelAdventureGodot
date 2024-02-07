@@ -9,4 +9,7 @@ func press(player):
 	player.finite_state_machine.change_state("disappear")
 	await player.disappeared
 	await get_tree().create_timer(.5).timeout
-	Game.main.world.load_level(destination)
+	if destination:
+		Game.main.world.load_level(destination)
+	else:
+		Game.main.summary.show_summary()

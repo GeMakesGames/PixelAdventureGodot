@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cenbfvi0dfui3"]
+[gd_scene load_steps=36 format=3 uid="uid://cenbfvi0dfui3"]
 
 [ext_resource type="Texture2D" uid="uid://dncioc7q8bct6" path="res://assets/others/transition.png" id="1_0gbqr"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1htc5"]
@@ -7,16 +7,59 @@
 [ext_resource type="Script" path="res://scripts/transition.gd" id="2_lngm2"]
 [ext_resource type="Texture2D" uid="uid://cdoa3v44psi0r" path="res://assets/background/green.png" id="3_42tlv"]
 [ext_resource type="Script" path="res://scripts/menu/parallax_background.gd" id="3_u0tuj"]
-[ext_resource type="Script" path="res://scripts/hud.gd" id="4_lkn63"]
 [ext_resource type="PackedScene" uid="uid://b2lm783abrwtl" path="res://scripts/background/background_resources.tscn" id="4_vxcwe"]
 [ext_resource type="FontFile" uid="uid://brcdkyj8iqipm" path="res://assets/text/text-white.png" id="5_pbk13"]
 [ext_resource type="Script" path="res://scripts/menu/start_menu/start_label.gd" id="7_07qhf"]
+[ext_resource type="Texture2D" uid="uid://dkhjlcadko8xy" path="res://assets/fruits/bananas.png" id="8_8wyma"]
+[ext_resource type="Script" path="res://scripts/menu/summary/summary.gd" id="8_w8qdx"]
+[ext_resource type="Texture2D" uid="uid://cxmd3n7xxtka5" path="res://assets/fruits/cherries.png" id="9_xx5sw"]
+[ext_resource type="Texture2D" uid="uid://xq1pqu145082" path="res://assets/fruits/kiwi.png" id="10_vlgh7"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="11_elgg5"]
+[ext_resource type="Texture2D" uid="uid://dqmrfh1b0w3u5" path="res://assets/fruits/melon.png" id="11_vntke"]
+[ext_resource type="Texture2D" uid="uid://dxnwtetserpvg" path="res://assets/fruits/orange.png" id="12_c5ak4"]
+[ext_resource type="Texture2D" uid="uid://b6xfcnkiucfuw" path="res://assets/fruits/pineapple.png" id="13_w3ceu"]
+[ext_resource type="Texture2D" uid="uid://20chyv0vmn44" path="res://assets/fruits/strawberry.png" id="14_qrbuw"]
+[ext_resource type="PackedScene" uid="uid://dtig75btjjagh" path="res://scripts/level/level_2.tscn" id="20_4x356"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tl0jt"]
 load_path = "res://.godot/imported/01.png-2411263f79530abf8255bb6c0490399e.ctex"
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_j7gkl"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7q5gp"]
+load_path = "res://.godot/imported/apple.png-09c2505951c5ac9d14160fb946b3c9c5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kev1k"]
+atlas = SubResource("CompressedTexture2D_7q5gp")
+region = Rect2(10, 7, 12, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc5hl"]
+atlas = ExtResource("8_8wyma")
+region = Rect2(9.03239, 7.85742, 14.0536, 14.1887)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr72p"]
+atlas = ExtResource("9_xx5sw")
+region = Rect2(9, 9, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh18g"]
+atlas = ExtResource("10_vlgh7")
+region = Rect2(9, 9, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8kv8"]
+atlas = ExtResource("11_vntke")
+region = Rect2(7, 10, 18, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8em8"]
+atlas = ExtResource("12_c5ak4")
+region = Rect2(9, 9, 17, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idtka"]
+atlas = ExtResource("13_w3ceu")
+region = Rect2(10, 8, 12, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7alj"]
+atlas = ExtResource("14_qrbuw")
+region = Rect2(11, 9, 11, 14)
 
 [sub_resource type="Animation" id="Animation_jtsci"]
 length = 0.001
@@ -658,13 +701,6 @@ icon = SubResource("CompressedTexture2D_tl0jt")
 flat = true
 expand_icon = true
 
-[node name="CenterContainer" type="CenterContainer" parent="StartMenu"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="RichTextLabel" type="RichTextLabel" parent="StartMenu"]
 offset_left = 319.0
 offset_right = 320.0
@@ -771,23 +807,195 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_j7gkl")
 
-[node name="HUDLayer" type="CanvasLayer" parent="."]
+[node name="Summary" type="CanvasLayer" parent="."]
 visible = false
-script = ExtResource("4_lkn63")
+script = ExtResource("8_w8qdx")
 
-[node name="MarginContainer" type="MarginContainer" parent="HUDLayer"]
+[node name="ColorRect" type="ColorRect" parent="Summary"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
+color = Color(0, 0, 0, 0.431373)
 
-[node name="ScoreLabel" type="RichTextLabel" parent="HUDLayer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Summary"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="Summary/MarginContainer"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("5_pbk13")
-text = "score: 0"
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("5_pbk13")
+theme_override_font_sizes/font_size = 50
+text = "summary"
+
+[node name="GridContainer" type="GridContainer" parent="Summary/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/v_separation = 10
+columns = 5
+
+[node name="Apple" type="TextureRect" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_kev1k")
+expand_mode = 3
+
+[node name="AppleLabel" type="Label" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("5_pbk13")
+theme_override_font_sizes/font_size = 30
+text = ":10"
+
+[node name="Control" type="Control" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Banana" type="TextureRect" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_cc5hl")
+expand_mode = 3
+
+[node name="BananaLabel" type="Label" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("5_pbk13")
+theme_override_font_sizes/font_size = 30
+text = ":10"
+
+[node name="Cherries" type="TextureRect" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_tr72p")
+expand_mode = 3
+
+[node name="CherriesLabel" type="Label" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("5_pbk13")
+theme_override_font_sizes/font_size = 30
+text = ":10"
+
+[node name="Control2" type="Control" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Kiwi" type="TextureRect" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_jh18g")
+expand_mode = 3
+
+[node name="KiwiLabel" type="Label" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("5_pbk13")
+theme_override_font_sizes/font_size = 30
+text = ":10"
+
+[node name="Melon" type="TextureRect" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_y8kv8")
+expand_mode = 3
+
+[node name="MelonLabel" type="Label" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("5_pbk13")
+theme_override_font_sizes/font_size = 30
+text = ":10"
+
+[node name="Control3" type="Control" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Orange" type="TextureRect" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_a8em8")
+expand_mode = 3
+
+[node name="OrangeLabel" type="Label" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("5_pbk13")
+theme_override_font_sizes/font_size = 30
+text = ":10"
+
+[node name="Pineapple" type="TextureRect" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_idtka")
+expand_mode = 3
+
+[node name="PineappleLabel" type="Label" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("5_pbk13")
+theme_override_font_sizes/font_size = 30
+text = ":10"
+
+[node name="Control4" type="Control" parent="Summary/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="Strawberry" type="TextureRect" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_y7alj")
+expand_mode = 3
+
+[node name="StrawberryLabel" type="Label" parent="Summary/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("5_pbk13")
+theme_override_font_sizes/font_size = 30
+text = ":10"
+
+[node name="GridContainer2" type="GridContainer" parent="Summary/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="TotalFruitsTextLabel" type="Label" parent="Summary/MarginContainer/GridContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("5_pbk13")
+theme_override_font_sizes/font_size = 30
+text = "total"
+
+[node name="TotalFruits" type="Label" parent="Summary/MarginContainer/GridContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("5_pbk13")
+theme_override_font_sizes/font_size = 30
+text = ":10"
+
+[node name="DeathCounterTextLabel" type="Label" parent="Summary/MarginContainer/GridContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("5_pbk13")
+theme_override_font_sizes/font_size = 30
+text = "deaths"
+
+[node name="DeathCounter" type="Label" parent="Summary/MarginContainer/GridContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("5_pbk13")
+theme_override_font_sizes/font_size = 30
+text = ":1"
 
 [node name="TransitionLayer" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -814,8 +1022,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 10240.0
-offset_bottom = 5760.0
+offset_right = 17280.0
+offset_bottom = 9720.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_0gbqr")
@@ -829,8 +1037,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -44.0
-offset_right = 10284.0
-offset_bottom = 5760.0
+offset_right = 17324.0
+offset_bottom = 9720.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_0gbqr")
@@ -840,4 +1048,4 @@ stretch_mode = 1
 script = ExtResource("11_elgg5")
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="World"]
-resources = [PackedStringArray("level_1"), [ExtResource("1_vk41l")]]
+resources = [PackedStringArray("level_1", "level_2"), [ExtResource("1_vk41l"), ExtResource("20_4x356")]]

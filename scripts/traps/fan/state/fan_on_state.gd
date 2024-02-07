@@ -6,6 +6,7 @@ extends State
 func enter():
 	object.particles.emitting = true
 	object.animation_player.play("on")
+	if object.duration_time == -1: return
 	duration_timer.start()
 	
 func physics_process(delta):
@@ -13,7 +14,7 @@ func physics_process(delta):
 		var player = object.player
 		player.velocity = player.velocity.move_toward(Vector2(player.velocity.x, -suvat.v), delta  * suvat.a)
 		
-	if duration_timer.is_stopped():
+	if object.duration_time != -1 and duration_timer.is_stopped():
 		change_state("off")
 
 func exit():

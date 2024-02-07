@@ -1,7 +1,5 @@
 extends Node
 
-signal score_changed
-
 var main
 var player :
 	get:
@@ -15,12 +13,23 @@ var camera :
 	set(value):
 		camera = weakref(value)
 		
-#rework later
-var score = 0
+var fruits_collected = {
+	"apple" : 0,
+	"bananas" : 0,
+	"cherries" : 0,
+	"kiwi" : 0,
+	"melon" : 0,
+	"orange" : 0,
+	"pineapple" : 0,
+	"strawberry" : 0
+}
 
-func update_score(amount):
-	score += amount
-	score_changed.emit()
+var deaths = 0
+
+func start_run():
+	for fruit in fruits_collected:
+		fruits_collected[fruit] = 0
+	deaths = 0
 
 func pause():
 	get_tree().paused = true

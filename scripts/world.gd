@@ -4,7 +4,7 @@ extends Node2D
 
 var current_level
 
-func load_level(name):
+func load_level(level_name):
 	Game.pause()
 	if current_level:
 		current_level.set_process_input(false)
@@ -15,8 +15,12 @@ func load_level(name):
 	if current_level:
 		current_level.queue_free()
 	Game.resume()
-	current_level = resource_preloader.get_resource(name).instantiate()
+	current_level = resource_preloader.get_resource(level_name).instantiate()
 	add_child(current_level)
 	transition.fade_in()
 	await transition.finished
 	Game.player.finite_state_machine.change_state("spawn")
+
+func unload_current_level():
+	current_level.queue_free()
+	current_level = null
