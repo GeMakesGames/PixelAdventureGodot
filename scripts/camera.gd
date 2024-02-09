@@ -1,13 +1,13 @@
 extends Camera2D
 
 var decay := 0.8
-var max_offset := Vector2(20,10)
+var max_offset := Vector2(10,10)
 @export var noise : FastNoiseLite
 
 var noise_y = 0 
 
 var trauma := 0.0 
-var trauma_pwr := 3 
+var trauma_pwr := 2
 
 func _ready():
 	Game.camera = self
