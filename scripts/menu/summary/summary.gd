@@ -16,7 +16,7 @@ func show_summary():
 	$MarginContainer/GridContainer2/TotalFruits.text = ":%d" % total_fruits
 	show()
 	#TODO future me change from 3.0 to 10.0
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(10.0).timeout
 	if visible:
 		Game.main.transition.fade_out()
 		await Game.main.transition.finished

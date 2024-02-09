@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cenbfvi0dfui3"]
+[gd_scene load_steps=37 format=3 uid="uid://cenbfvi0dfui3"]
 
 [ext_resource type="Texture2D" uid="uid://dncioc7q8bct6" path="res://assets/others/transition.png" id="1_0gbqr"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1htc5"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b2lm783abrwtl" path="res://scripts/background/background_resources.tscn" id="4_vxcwe"]
 [ext_resource type="FontFile" uid="uid://brcdkyj8iqipm" path="res://assets/text/text-white.png" id="5_pbk13"]
 [ext_resource type="Script" path="res://scripts/menu/start_menu/start_label.gd" id="7_07qhf"]
+[ext_resource type="Script" path="res://scripts/menu/start_menu/quit_label.gd" id="8_3d3ws"]
 [ext_resource type="Texture2D" uid="uid://dkhjlcadko8xy" path="res://assets/fruits/bananas.png" id="8_8wyma"]
 [ext_resource type="Script" path="res://scripts/menu/summary/summary.gd" id="8_w8qdx"]
 [ext_resource type="Texture2D" uid="uid://cxmd3n7xxtka5" path="res://assets/fruits/cherries.png" id="9_xx5sw"]
@@ -774,26 +775,13 @@ theme_override_font_sizes/font_size = 30
 text = "start"
 script = ExtResource("7_07qhf")
 
-[node name="ControlsLabel" type="Label" parent="StartMenu/SelectionContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_fonts/font = ExtResource("5_pbk13")
-theme_override_font_sizes/font_size = 30
-text = "controls"
-
-[node name="CreditsLabel" type="Label" parent="StartMenu/SelectionContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_fonts/font = ExtResource("5_pbk13")
-theme_override_font_sizes/font_size = 30
-text = "credits"
-
 [node name="QuitLabel" type="Label" parent="StartMenu/SelectionContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("5_pbk13")
 theme_override_font_sizes/font_size = 30
 text = "quit"
+script = ExtResource("8_3d3ws")
 
 [node name="PauseBackground" type="CanvasLayer" parent="."]
 visible = false
@@ -1022,8 +1010,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 17280.0
-offset_bottom = 9720.0
+offset_right = 18560.0
+offset_bottom = 10440.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_0gbqr")
@@ -1037,8 +1025,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -44.0
-offset_right = 17324.0
-offset_bottom = 9720.0
+offset_right = 18604.0
+offset_bottom = 10440.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_0gbqr")

@@ -4,7 +4,7 @@ extends PlayerBaseState
 var freeze = false
 
 func enter():
-	Game.camera.add_trauma(1)
+	Game.camera.add_trauma(2)
 	freeze = false
 	object.animation_player.play("hit")
 	object.velocity = Vector2(object.hit_direction * object.hit_suvat.v, -object.hit_fall_suvat.v)

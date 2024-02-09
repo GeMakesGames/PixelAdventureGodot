@@ -6,10 +6,8 @@ signal shown
 var selection = 0
 
 @onready var start_label = $SelectionContainer/VBoxContainer/StartLabel
-@onready var controls_label = $SelectionContainer/VBoxContainer/ControlsLabel
-@onready var credits_label = $SelectionContainer/VBoxContainer/CreditsLabel
 @onready var quit_label = $SelectionContainer/VBoxContainer/QuitLabel
-@onready var selection_indexes = [start_label, controls_label, credits_label, quit_label]
+@onready var selection_indexes = [start_label, quit_label]
 
 
 
